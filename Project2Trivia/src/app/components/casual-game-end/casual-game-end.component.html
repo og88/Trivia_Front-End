@@ -1,0 +1,32 @@
+
+<div class="container d-flex h-100">
+  <div class="row justify-content-center align-self-center">
+     <!-- profile card  -->
+    <div class="col-md-12 text-center" id="profile-card">
+        
+        <div class="row">
+            <div class="col-sm-12 text-center h2">
+                Game End!<br>
+            </div>
+            <div class="col-sm-12 text-center h2">
+                USERNAME<br>
+            </div>
+            <div class="col-sm-12 text-center">
+                LEVEL GOES HERE
+            </div>
+            <div class="col-sm-12 text-center">
+                Casual Mode
+            </div>
+            <div class="col-sm-12 text-center">
+                TOTAL POINTS {{this.score}}
+            </div>
+        </div>
+
+    </div>
+        <!-- guest menu nav  -->
+      <nav class="col-md-12 text-center fixed-bottom">
+          <button class="btn btn-primary" (click)="clearGameStats()" routerLink="/main-menu">Ok!</button>
+      </nav> 
+  </div>
+</div>
+    
