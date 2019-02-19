@@ -1,0 +1,34 @@
+
+<div class="container d-flex h-100">
+    <div class="row justify-content-center align-self-center">
+        <!-- profile card  -->
+        <div class="col-md-12 text-center fixed-top" id="profile-card">
+            
+            <div class="row">
+                <div class="col-sm-3 text-center">
+                    Pic
+                </div>
+                <div class="col-sm-9 text-center">
+                    USERNAME<br>
+                    HIGH SCORE
+                </div>
+                <div class="col-sm-12 text-center">
+                    LEVEL GOES HERE
+                </div>
+            </div>
+
+        </div>
+        <!-- game logo  -->
+        <div class="col-md-12 text-center" id="game-title">
+            {{title}}
+        </div>
+        <!-- guest menu nav  -->
+        <nav class="col-md-12 text-center">
+            <button class="btn btn-primary" routerLink="/casual-game">Play</button><br>
+            <button class="btn btn-primary" routerLink="/edit-profile">Edit Profile</button><br>
+            <button class="btn btn-primary" routerLink="/leaderboard">Leaderboard</button><br>
+            <button class="btn btn-primary" (click)="logout()" routerLink="/guest-menu">Logout</button>
+        </nav> 
+    </div>
+</div>
+      
