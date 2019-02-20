@@ -32,9 +32,8 @@ onLogin(){
   const httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      'Access-Control-Allow-Origin': 'http://localhost:8080',
-						'Access-Control-Allow-Credentials': 'true',
-						'Access-Control-Allow-Methods': 'POST'
+      'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Credentials': 'true',
     })
   };
 
@@ -47,6 +46,7 @@ onLogin(){
         this.http.post<User>(this.configUrl, newLocal.loginObj, httpOptions)
         .subscribe(Response => {
           if(Response.username == this.loginObj.username){
+            console.log(Response);
             localStorage.setItem('currentUser', JSON.stringify(Response));
             this.router.navigate(["/main-menu"])
           }
