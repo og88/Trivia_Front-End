@@ -8,13 +8,14 @@
     <div class="col-md-12 text-center">
       <form #loginForm="ngForm" (ngSubmit)="onLogin()" novalidate>
         <div class="form-group">
-          <input class="form-control" type="text" name="userParam" id="user-param" placeholder="Enter Username" required/>
+          <input #username='ngModel' class="form-control" type="text" name="userParam" id="user-param" placeholder="Enter Username" [(ngModel)]='loginObj.username' required/>
         </div>
         <div class="form-group">
-          <input class="form-control" type="text" name="passParam" id="pass-param" placeholder="Enter Password" required/>
+          <input #password='ngModel' class="form-control" type="text" name="passParam" id="pass-param" placeholder="Enter Password" [(ngModel)]='loginObj.password' required/>
         </div>
         <div class="form-group">
-          <input class="btn btn-primary" type="button" value="Login" routerLink="/main-menu">
+         <!-- <input class="btn btn-primary" type="button" value="Login" routerLink="/main-menu">-->
+          <input class="btn btn-primary" type="submit" value="Login">
         </div>
       </form>
     </div> 
