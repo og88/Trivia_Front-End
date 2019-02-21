@@ -6,18 +6,19 @@
       </div>
       <!-- register form  -->
       <div class="col-md-12 text-center">
-        <form method="POST">
+        <form #updateForm="ngForm" method="POST">
+          {{ updateForm.value | json }}
           <div class="form-group">
-            <input class="form-control" type="text" name="userParam" id="user-param" value="MyUsername" required/>
+            <input class="form-control" type="text" name="userParam" id="user-param" value="MyUsername" required ngModel/>
           </div>
           <div class="form-group">
-            <input class="form-control" type="password" name="passParam" id="pass-param" value="MyPassword" required/>
+            <input class="form-control" type="password" name="passParam" id="pass-param" value="MyPassword" required ngModel/>
           </div>
           <div class="form-group">
-            <input class="form-control" type="password" name="passConfirmParam" id="pass-confirm-param" value="MyPassword" required/>
+            <input class="form-control" type="password" name="passConfirmParam" id="pass-confirm-param" value="MyPassword" required ngModel/>
           </div>
           <div class="form-group">
-            <input class="form-control" type="email" name="emailParam" id="email-param" value="MyEmail@email.com" required/>
+            <input class="form-control" type="email" name="emailParam" id="email-param" value="MyEmail@email.com" required ngModel/>
           </div>
           <div class="form-group">
             <input class="btn btn-primary" type="button" value="Update" routerLink="/main-menu">

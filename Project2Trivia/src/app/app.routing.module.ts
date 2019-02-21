@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes, Route} from '@angular/router';
 import { GuestMenuComponent } from './components/guest-menu/guest-menu.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -9,7 +9,7 @@ import { CasualGameComponent } from './components/casual-game/casual-game.compon
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { CasualGameEndComponent } from './components/casual-game-end/casual-game-end.component';
 
-const routes: Routes = [
+const routes: Route[] = [
 {
     //sets the default path on startup
     path: "",

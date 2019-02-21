@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-main-menu',
@@ -9,9 +10,12 @@ export class MainMenuComponent implements OnInit {
 
   title: string = "Trivia Hero!";
 
+  user : User = JSON.parse(localStorage.getItem('currentUser'));
+
   constructor() { }
 
   ngOnInit() {
+    
   }
 
   logout(){
