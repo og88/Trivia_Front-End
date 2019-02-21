@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const endpoint = 'http://jservice.io/api/category?id=309';
+const endpoint = 'http://jservice.io/api/category?id=680';
+const endpoint2 = 'http://jservice.io/api/category?id=680';
+
 const httpOptions = {
     headers: new HttpHeaders({'Content': 'application/json'})
 };
@@ -13,7 +15,7 @@ export class QuestionService {
 
     //Uses http.get() to load data from a single API endpoint
     getQuestion(){
-        return this.http.get<any>(endpoint)
+        return this.http.get<any>(endpoint);
         
     }
 

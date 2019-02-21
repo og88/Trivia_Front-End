@@ -6,11 +6,17 @@
             
             <div class="row">
                 <div class="col-sm-3 text-center">
-                    Pic
+                    {{this.rank}}
                 </div>
                 <div class="col-sm-9 text-center">
-                    {{user.username}} <br>
-                   {{user.highScore}} 
+
+                    my user {{user.username}} <br>
+                  my High Score : {{user.highScore}} 
+                  <br>
+
+                    other {{this.username}}<br>
+                    other High Score: {{this.userHighscore}}
+
                 </div>
                 <div class="col-sm-12 text-center">
                     LEVEL GOES HERE
@@ -19,12 +25,12 @@
 
         </div>
         <!-- game logo  -->
-        <div class="col-md-12 text-center" id="game-title">
-            {{title}}
+        <div class="col-md-12 text-center">
+            <img id="logo" src="../../../assets/img/TriviaLogo1.png">
         </div>
         <!-- guest menu nav  -->
         <nav class="col-md-12 text-center">
-            <button class="btn btn-primary" routerLink="/casual-game">Play</button><br>
+            <button class="btn btn-primary" routerLink="/play-game">Play</button><br>
             <button class="btn btn-primary" routerLink="/edit-profile">Edit Profile</button><br>
             <button class="btn btn-primary" routerLink="/leaderboard">Leaderboard</button><br>
             <button class="btn btn-primary" (click)="logout()" routerLink="/guest-menu">Logout</button>

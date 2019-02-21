@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
 configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/project2/rest/login'
 //configUrl = 'http://localhost:8080/project2/rest/login'
 
-
 onLogin(){
 
   const httpOptions = {
