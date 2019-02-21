@@ -15,10 +15,12 @@ import { RegisterComponent } from './components/register/register.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { CasualGameComponent } from './components/casual-game/casual-game.component';
-import { CasualGameEndComponent } from './components/casual-game-end/casual-game-end.component';
+import { PlayGameComponent } from './components/play-game/play-game.component';
+import { PlayGameEndComponent } from './components/play-game-end/play-game-end.component';
 //custom service imports
 import { QuestionService } from './services/question.service';
+import { RankService } from './services/rank.service';
+import { LayoutImagesService } from './services/layout-images.service';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,9 @@ import { QuestionService } from './services/question.service';
     RegisterComponent,
     LeaderboardComponent,
     MainMenuComponent,
-    CasualGameComponent,
     EditProfileComponent,
-    CasualGameEndComponent
+    PlayGameComponent,
+    PlayGameEndComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,9 @@ import { QuestionService } from './services/question.service';
   ],
   providers: [
     QuestionService,
-    CasualGameComponent
+    PlayGameComponent,
+    RankService,
+    LayoutImagesService
   ],
   bootstrap: [AppComponent]
 })

@@ -2,7 +2,7 @@
   <div class="row justify-content-center align-self-center">
     <!-- game logo  -->
     <div class="col-md-12 text-center" id="game-title">
-      {{title}}
+      <img id="logo" src="../../../assets/img/TriviaLogo1.png">
     </div>
     <!-- login form  -->
     <div class="col-md-12 text-center">
@@ -13,14 +13,20 @@
         <div class="form-group">
           <input class="form-control" type="text" name="passParam" id="pass-param" placeholder="Enter Password" required/>
         </div>
-        <div class="form-group">
-          <input class="btn btn-primary" type="button" value="Login" routerLink="/main-menu">
-        </div>
       </form>
     </div> 
-    <!-- login nav  -->
-    <div class="col-md-12 text-center">
-      <button class="btn btn-warning" routerLink="/guest-menu">Back</button>
+
+    <div class="col-md-12 text-center" routerLink="/main-menu">
+      <img class="loginBtn" src="../../../assets/img/button-md-top-1.png">
+      <img class="loginBtn loginBtnBg" src="../../../assets/img/button-md-bg-1.png">
+      <div class="loginBtnTxt">Login</div>
     </div>
+    <div class="col-md-12 text-center" routerLink="/guest-menu">
+      <img class="loginBtn" src="../../../assets/img/button-md-top-1.png">
+      <img class="loginBtn loginBtnBg" src="../../../assets/img/button-md-bg-1.png">
+      <div class="loginBtnTxt">Back</div>
+    </div>
+    <!-- login nav  -->
+    
   </div>
 </div>

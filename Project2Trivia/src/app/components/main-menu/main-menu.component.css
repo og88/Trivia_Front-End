@@ -35,3 +35,7 @@
 .main-menu-nav-link:hover{
     background-color: rgb(70, 21, 184);
 }
+
+#logo{
+    width: 100%;
+}

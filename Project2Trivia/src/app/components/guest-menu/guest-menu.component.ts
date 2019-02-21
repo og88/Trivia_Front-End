@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LayoutImagesService } from 'src/app/services/layout-images.service';
 //import { Http } from '@angular/http';
 
 @Component({
@@ -12,10 +13,8 @@ export class GuestMenuComponent implements OnInit {
   logo: string = "http://placehold.it/250x250?text=Trivia Hero!";
   description: string = "A Trivia Game";
 
-  /*constructor(http: Http) {
-    http.get('/app/components').toPromise()
-      .then(response => {debugger;}, error => {debugger;});
-   }*/
+
+  constructor(private _layoutImages: LayoutImagesService) {}
 
   ngOnInit() {
   }

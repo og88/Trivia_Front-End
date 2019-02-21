@@ -59,3 +59,47 @@
     text-align: center;
     font-size: 1.3em;
 }
+
+#logo{
+    width: 100%;
+    margin-top: -30px;
+}
+
+.loginBtn{
+    z-index: 2;
+    position: relative;
+    left: 0;
+    top: 3px;
+    width: 100%;
+    transition: ease 500ms;
+
+}
+
+.loginBtn:hover{
+    transform: scale(1.05);
+}
+
+.loginBtnBg{
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.loginBtnTxt{
+    z-index: 3;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 35px;  
+    font-size: 1.9em;
+    width: 100%;
+    color: #000;
+    text-transform: uppercase;
+    font-family: 'Press Start 2P', cursive !important;
+    pointer-events: none;
+}
+
+.loginBtnTxt:hover, .loginBtnBg:hover, .loginBtn:hover {
+    cursor: pointer;
+}

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CasualGameEndComponent } from './casual-game-end.component';
+import { PlayGameEndComponent } from './play-game-end.component';
 
-describe('CasualGameEndComponent', () => {
-  let component: CasualGameEndComponent;
-  let fixture: ComponentFixture<CasualGameEndComponent>;
+describe('PlayGameEndComponent', () => {
+  let component: PlayGameEndComponent;
+  let fixture: ComponentFixture<PlayGameEndComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CasualGameEndComponent ]
+      declarations: [ PlayGameEndComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CasualGameEndComponent);
+    fixture = TestBed.createComponent(PlayGameEndComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

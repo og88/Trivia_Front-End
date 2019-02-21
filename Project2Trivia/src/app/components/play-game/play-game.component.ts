@@ -1,8 +1,8 @@
-import { Component, OnInit, Injectable } from '@angular/core';
-//models
+import { Component, OnInit } from '@angular/core';
+//imported models
 import {Currentgame} from '../../models/currentgame';
 import {QuestionTrack} from '../../models/question-track';
-//services
+//imported services
 import {QuestionService} from '../../services/question.service';
 import { Router } from '@angular/router';
 
@@ -11,11 +11,11 @@ interface theQuestions {
 }
 
 @Component({
-  selector: 'app-casual-game',
-  templateUrl: './casual-game.component.html',
-  styleUrls: ['./casual-game.component.css']
+  selector: 'app-play-game',
+  templateUrl: './play-game.component.html',
+  styleUrls: ['./play-game.component.css']
 })
-export class CasualGameComponent implements OnInit {
+export class PlayGameComponent implements OnInit {
 
   //title shown on page
   title: string = "Trivia Hero!";
@@ -26,6 +26,7 @@ export class CasualGameComponent implements OnInit {
   totalRight: number;
   totalWrong: number;
   healthPoints: number;
+  healthBar: string[] = new Array();
   
   //track question stats
   question: string;
@@ -46,30 +47,33 @@ export class CasualGameComponent implements OnInit {
   userAnswer: string;
   value: string;
 
-  questionTimer: any;
-
   constructor(private _questionService: QuestionService, public router: Router) { }
 
   ngOnInit() {
     this.questions = this._questionService.getQuestion().subscribe(data => {
       this.questionsArr = data.clues;
-
-      //set current game status to 0
-      this.totalScore = 0;
-      this.totalAnswered = 0;
-      this.totalRight = 0;
-      this.totalWrong = 0;
-      this.healthPoints = 12;
-      
       //get first question on startup
       this.getNewQuestion();
+    });
 
-    })
+    //set current game status to 0
+    this.totalScore = 0;
+    this.totalAnswered = 0;
+    this.totalRight = 0;
+    this.totalWrong = 0;
+    this.healthPoints = 5;
+    
+    //initially store the array with hearts
+    for(let i=0; i < this.healthPoints; i++){
+      this.healthBar.push("❤");
+    }
+
+    
   }
 
   //get a new question
   getNewQuestion() {
-    
+
     this.questionsArrLength = this.questionsArr.length - 1; //get array length
     this.questionsArrRandomIndex = Math.floor(Math.random() * this.questionsArrLength); //generate random number
    
@@ -96,8 +100,9 @@ export class CasualGameComponent implements OnInit {
       if(this.questionsArrValue == 0 || this.questionsArrValue == null){
         this.questionsArrValue = 100;
       }
-      //remove current question from array
+      //remove current question from array to avoid duplicates
       this.questionsArr.splice(this.questionsArrRandomIndex, 1);
+    
 
       console.log("The current index is " + this.questionsArrRandomIndex);
       console.log("The current question is: " + this.questionsArrClue);
@@ -128,9 +133,11 @@ export class CasualGameComponent implements OnInit {
       //if clue answer is equal to user input answer, mark right, else mark wrong
       if(this.userAnswer.includes(this.questionAnswerMin)){
         console.log("Snitch, you guessin'!...... you was right.");
+        //increase total score, total answered, and total right
         this.totalScore += this.questionsArrValue;
         this.totalAnswered += 1;
         this.totalRight += 1;
+        //add question to question statistics array as right
         this.questionStats.push(new QuestionTrack(this.questionsArrClue, true));
         console.log("Total Score: " + this.totalScore);
         console.log("Total Answered: " + this.totalAnswered);
@@ -138,19 +145,29 @@ export class CasualGameComponent implements OnInit {
         console.log("Total Wrong: " + this.totalWrong);
       } else {
         console.log("You is wrong, fam...");
+        //increase total answered, total wrong; decrease healthPoints
         this.totalAnswered += 1;
         this.totalWrong += 1;
         this.healthPoints -= 1;
+        //empty health bar array and repopular with the new total of hearts
+        this.healthBar = [];
+        for(let i=0; i < this.healthPoints; i++){
+          this.healthBar.push("❤");
+        }
+        //add question to question statistics array as wrong
         this.questionStats.push(new QuestionTrack(this.questionsArrClue, false));
         var score = this.totalScore; var right = this.totalRight; var wrong = this.totalWrong; var answered = this.totalAnswered;
         console.log("The stored variables are " + score + ", " + right + ", " + wrong + ", " + answered);
+        //if health reaches 0, create currentgame object and store current game stats inside
+        //store object in localStorage to be used in the next component
         if(this.healthPoints <= 0){
           var gamestats = new Currentgame(score, right, wrong, answered);
           localStorage.setItem("currentGame", JSON.stringify(gamestats));
           //store question stats in a local storage array of objects
           //localStorage.setItem("questionStats", JSON.stringify(this.questionStats));
           //send POST request to update database with question stats
-          this.router.navigate(['/casual-game-end']);
+          //redirect to play-game-end component
+          this.router.navigate(['/play-game-end']);
         }
         console.log("Total Score: " + this.totalScore);
         console.log("Total Answered: " + this.totalAnswered);
@@ -163,16 +180,31 @@ export class CasualGameComponent implements OnInit {
       //get new question
       this.getNewQuestion();
 
+      //else if user does not enter anything as an answer
     } else {
-      console.log("You need to enter an answer!");
+      console.log("You've been attacked!");
+      //decrease healthPoints
+      this.healthPoints -= 1;
+      this.healthBar = [];
+      for(let i=0; i < this.healthPoints; i++){
+        this.healthBar.push("❤");
+      }
+      //if health reaches 0, create currentgame object and store current game stats inside
+      //store object in localStorage to be used in the next component
+      if(this.healthPoints <= 0){
+        var score = this.totalScore; var right = this.totalRight; var wrong = this.totalWrong; var answered = this.totalAnswered;
+        var gamestats = new Currentgame(score, right, wrong, answered);
+        localStorage.setItem("currentGame", JSON.stringify(gamestats));
+        //store question stats in a local storage array of objects
+        //localStorage.setItem("questionStats", JSON.stringify(this.questionStats));
+        //send POST request to update database with question stats
+        //redirect to play-game-end component
+        this.router.navigate(['/play-game-end']);
+      }
+      this.getNewQuestion();
     } 
 
     
 
   } 
-
-  goHome(){
-    this.router.navigate(['/main-menu']);
-  }
-
 }

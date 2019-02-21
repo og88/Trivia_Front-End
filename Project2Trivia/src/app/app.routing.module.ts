@@ -5,9 +5,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
-import { CasualGameComponent } from './components/casual-game/casual-game.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-import { CasualGameEndComponent } from './components/casual-game-end/casual-game-end.component';
+import { PlayGameComponent } from './components/play-game/play-game.component';
+import { PlayGameEndComponent } from './components/play-game-end/play-game-end.component';
 
 const routes: Routes = [
 {
@@ -41,12 +41,12 @@ const routes: Routes = [
     component: EditProfileComponent
 },
 {
-    path: "casual-game",
-    component: CasualGameComponent
+    path: "play-game",
+    component: PlayGameComponent
 },
 {
-    path: "casual-game-end",
-    component: CasualGameEndComponent
+    path: "play-game-end",
+    component: PlayGameEndComponent
 }
 ];
 

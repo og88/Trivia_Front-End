@@ -1,15 +1,27 @@
 
 <div class="container d-flex h-100">
-    <div class="row justify-content-center align-self-center">
+    <div class="row justify-content-center">
         <!-- game logo  -->
         <div class="col-md-12 text-center" id="game-title">
-            {{title}}
+            <img src="../../../assets/img/TriviaLogo2.png" id="logo">
         </div>
         <!-- guest menu nav  -->
-        <nav class="col-md-12 text-center">
-            <button class="btn btn-primary" routerLink="/login">Login</button><br>
-            <button class="btn btn-primary" routerLink="/register">Register</button>
-        </nav> 
+        <div class="col-md-12 mt-5">
+            <div class="guestBtnFontStyle" id="guestBtnContainer" routerLink="/login">
+                <img id="guestBtnTop" src="../../../assets/img/button-md-top-1.png">
+                <img id="btnSword" src="../../../assets/img/sword-1.png">
+                <img id="guestBtnBg" src="../../../assets/img/button-md-bg-1.png">
+                <div id="guestBtnText">Login</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="guestBtnFontStyle" id="guestBtnRegContainer" routerLink="/register">
+                <img id="guestBtnTop" src="../../../assets/img/button-md-top-1.png">
+                <img id="guestBtnBg" src="../../../assets/img/button-md-bg-1.png">
+                <div id="guestBtnText">Register</div>
+            </div>
+            <br>
+        </div> 
     </div>
 </div>
       
