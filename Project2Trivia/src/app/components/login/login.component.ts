@@ -27,22 +27,13 @@ configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/projec
 //configUrl = 'http://localhost:8080/project2/rest/login'
 
 onLogin(){
-
-  const httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Access-Control-Allow-Origin': '*',
-      "Access-Control-Allow-Methods" : "GET, OPTIONS, HEAD, PUT, POST"
-    })
-  };
-
   const newLocal = this;
 
     console.log('User name ' + newLocal.loginObj.username + ' password ' + newLocal.loginObj.password );
     if(newLocal.loginObj.username != ''){
       if(newLocal.loginObj.password !=''){
         console.log('works');
-        this.http.post<User>(this.configUrl, newLocal.loginObj, httpOptions)
+        this.http.post<User>(this.configUrl, newLocal.loginObj)
         .subscribe(Response => {
           if(Response.username == this.loginObj.username){
             console.log(Response);
