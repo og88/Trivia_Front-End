@@ -5,6 +5,8 @@ import {QuestionTrack} from '../../models/question-track';
 //imported services
 import {QuestionService} from '../../services/question.service';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 interface theQuestions {
   theClues: Object
@@ -47,7 +49,7 @@ export class PlayGameComponent implements OnInit {
   userAnswer: string;
   value: string;
 
-  constructor(private _questionService: QuestionService, public router: Router) { }
+  constructor(private _questionService: QuestionService, public router: Router, private http: HttpClient) { }
 
   ngOnInit() {
     this.questions = this._questionService.getQuestion().subscribe(data => {
@@ -74,11 +76,15 @@ export class PlayGameComponent implements OnInit {
   //get a new question
   getNewQuestion() {
 
+
     this.questionsArrLength = this.questionsArr.length - 1; //get array length
     this.questionsArrRandomIndex = Math.floor(Math.random() * this.questionsArrLength); //generate random number
    
     //get question according to the random index
     this.questionsArrClue = this.questionsArr[this.questionsArrRandomIndex].question;
+    this.questionsArrIndex = this.questionsArr[this.questionsArrRandomIndex].id;
+    this.questionsArrCategory = this.questionsArr[this.questionsArrRandomIndex].category_id;
+    console.log(JSON.stringify(this.questionsArr[this.questionsArrRandomIndex]));
 
     //if question contains 'video clue' remove it from the array and get a new question
     if(!this.questionsArrClue.includes("video clue")){
@@ -138,7 +144,7 @@ export class PlayGameComponent implements OnInit {
         this.totalAnswered += 1;
         this.totalRight += 1;
         //add question to question statistics array as right
-        this.questionStats.push(new QuestionTrack(this.questionsArrClue, true));
+        this.questionStats.push(new QuestionTrack(this.questionsArrIndex, this.questionsArrClue,this.questionsArrCategory, 1, 0, this.questionsArrValue));
         console.log("Total Score: " + this.totalScore);
         console.log("Total Answered: " + this.totalAnswered);
         console.log("Total Right: " + this.totalRight);
@@ -155,7 +161,7 @@ export class PlayGameComponent implements OnInit {
           this.healthBar.push("❤");
         }
         //add question to question statistics array as wrong
-        this.questionStats.push(new QuestionTrack(this.questionsArrClue, false));
+        this.questionStats.push(new QuestionTrack(this.questionsArrIndex, this.questionsArrClue,this.questionsArrCategory, 0, 1, this.questionsArrValue));
         var score = this.totalScore; var right = this.totalRight; var wrong = this.totalWrong; var answered = this.totalAnswered;
         console.log("The stored variables are " + score + ", " + right + ", " + wrong + ", " + answered);
         //if health reaches 0, create currentgame object and store current game stats inside
@@ -177,6 +183,17 @@ export class PlayGameComponent implements OnInit {
 
       //after user input, clear user input
       this.value = "";
+      if(this.healthPoints <= 0){
+        this.UpdateQuestion();
+        var score = this.totalScore; var right = this.totalRight; var wrong = this.totalWrong; var answered = this.totalAnswered;
+        var gamestats = new Currentgame(score, right, wrong, answered);
+        localStorage.setItem("currentGame", JSON.stringify(gamestats));
+        //store question stats in a local storage array of objects
+        //localStorage.setItem("questionStats", JSON.stringify(this.questionStats));
+        //send POST request to update database with question stats
+        //redirect to play-game-end component
+        this.router.navigate(['/play-game-end']);
+      }
       //get new question
       this.getNewQuestion();
 
@@ -192,6 +209,7 @@ export class PlayGameComponent implements OnInit {
       //if health reaches 0, create currentgame object and store current game stats inside
       //store object in localStorage to be used in the next component
       if(this.healthPoints <= 0){
+        this.UpdateQuestion();
         var score = this.totalScore; var right = this.totalRight; var wrong = this.totalWrong; var answered = this.totalAnswered;
         var gamestats = new Currentgame(score, right, wrong, answered);
         localStorage.setItem("currentGame", JSON.stringify(gamestats));
@@ -203,11 +221,19 @@ export class PlayGameComponent implements OnInit {
       }
       this.getNewQuestion();
     } 
-
-    
-
   } 
 
+  //configUrl = 'http://localhost:8080/project2/rest/question/counter';
+  configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/project2/rest/question/counter';
+
+  UpdateQuestion(){
+    console.log("End of GAME \n"+JSON.stringify(this.questionStats));
+
+    this.http.post(this.configUrl, this.questionStats)
+        .subscribe(Response => {
+            console.log(Response);
+        });
+  }
   leaveGame(){
     
   }
