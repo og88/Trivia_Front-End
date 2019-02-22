@@ -207,4 +207,8 @@ export class PlayGameComponent implements OnInit {
     
 
   } 
+
+  leaveGame(){
+    
+  }
 }
