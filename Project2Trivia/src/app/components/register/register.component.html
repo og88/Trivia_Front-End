@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container d-flex h-100">
     <div class="row justify-content-center align-self-center">
       <!-- game logo  -->
@@ -30,4 +31,38 @@
       </div>
     </div>
   </div>
+=======
+<div class="container d-flex h-100">
+    <div class="row justify-content-center align-self-center">
+      <!-- game logo  -->
+      <div class="col-md-12 text-center" id="game-title">
+        {{title}}
+      </div>
+      <!-- register form  -->
+      <div class="col-md-12 text-center">
+        <form method="POST">
+          <div class="form-group">
+            <input class="form-control" type="text" name="userParam" id="user-param" placeholder="Enter Username" required/>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="password" name="passParam" id="pass-param" placeholder="Enter Password" required/>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="password" name="passConfirmParam" id="pass-confirm-param" placeholder="Confirm Password" required/>
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="email" name="emailParam" id="email-param" placeholder="Enter Email" required/>
+          </div>
+          <div class="form-group">
+            <input class="btn btn-primary" type="button" value="Register" routerLink="/guest-menu">
+          </div>
+        </form>
+      </div> 
+      <!-- register nav  -->
+      <div class="col-md-12 text-center">
+        <button class="btn btn-warning" routerLink="/guest-menu">Back</button>
+      </div>
+    </div>
+  </div>
+>>>>>>> 92b0a7f9a6cb8a060cda79eb14e6730cbd9106b8
   

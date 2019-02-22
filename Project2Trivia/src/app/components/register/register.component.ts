@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, OnInit, Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/models/user';
@@ -60,3 +61,22 @@ export class RegisterComponent implements OnInit {
     }
   }
 }
+=======
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
+})
+export class RegisterComponent implements OnInit {
+
+  title: string = "Trivia Hero!";
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+>>>>>>> 92b0a7f9a6cb8a060cda79eb14e6730cbd9106b8
