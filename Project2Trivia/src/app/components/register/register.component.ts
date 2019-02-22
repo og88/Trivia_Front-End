@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   title: string = "Trivia Hero!";
+  
   registerObj = {
     username : '',
     password : '',
@@ -43,11 +44,11 @@ export class RegisterComponent implements OnInit {
         console.log(this.registerObj);
         this.http.post<User>(this.configUrl, newLocal.registerObj, httpOptions)
         .subscribe(Response => {
-          //if(Response.username == this.registerObj.username){
+          if(Response.username == this.registerObj.username){
             console.log(Response);
             localStorage.setItem('currentUser', JSON.stringify(Response));
             this.router.navigate(["/main-menu"])
-          //}
+          }
         });
         } else{
           console.log("failed");

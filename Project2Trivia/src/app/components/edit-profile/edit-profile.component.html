@@ -6,22 +6,22 @@
       </div>
       <!-- register form  -->
       <div class="col-md-12 text-center">
-        <form #updateForm="ngForm" method="POST">
-          {{ updateForm.value | json }}
+        <form #updateForm="ngForm" (ngSubmit)="onEdit()">
+          <!-- {{ updateForm.value | json }} -->
           <div class="form-group">
-            <input class="form-control" type="text" name="userParam" id="user-param" value="MyUsername" required ngModel/>
+            <input #username='ngModel' class="form-control" type="text" name="userParam" id="user-param"  [(ngModel)]='editObject.username' required/>
           </div>
           <div class="form-group">
-            <input class="form-control" type="password" name="passParam" id="pass-param" value="MyPassword" required ngModel/>
+            <input #password='ngModel' class="form-control" type="password" name="passParam" id="pass-param" placeholder="Confirm Password" [(ngModel)]='editObject.password' required/>
+          </div>
+          <!-- <div class="form-group">
+            <input #confirmPass='ngModel' class="form-control" type="password" name="passConfirmParam" id="pass-confirm-param" [(ngModel)]='editObject.confirmPass' required/>
+          </div> -->
+          <div class="form-group">
+            <input #email='ngModel' class="form-control" type="email" name="emailParam" id="email-param" [(ngModel)]='editObject.email' required/>
           </div>
           <div class="form-group">
-            <input class="form-control" type="password" name="passConfirmParam" id="pass-confirm-param" value="MyPassword" required ngModel/>
-          </div>
-          <div class="form-group">
-            <input class="form-control" type="email" name="emailParam" id="email-param" value="MyEmail@email.com" required ngModel/>
-          </div>
-          <div class="form-group">
-            <input class="btn btn-primary" type="button" value="Update" routerLink="/main-menu">
+            <input class="btn btn-primary" type="submit" value="Update">
           </div>
         </form>
       </div> 
