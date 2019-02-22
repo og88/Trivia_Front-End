@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user';
 import { RankService } from 'src/app/services/rank.service';
 
 @Component({
@@ -9,17 +10,15 @@ import { RankService } from 'src/app/services/rank.service';
 export class MainMenuComponent implements OnInit {
 
   title: string = "Trivia Hero!";
+  user : User = JSON.parse(localStorage.getItem('currentUser'));
 
-  username: string;
-  userHighscore: number;
+  userHighscore: number = this.user.highScore;
   rank: string = null;
 
   constructor(private _rankService: RankService) { }
 
   ngOnInit() {
 
-    this.username = "OverwatchGod";
-    this.userHighscore = 3000;
     this.rank = this._rankService.getRank(this.userHighscore);
 
   }

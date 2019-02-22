@@ -9,18 +9,21 @@
                     {{this.rank}}
                 </div>
                 <div class="col-sm-9 text-center">
-                    {{this.username}}<br>
-                    High Score: {{this.userHighscore}}
+
+                    {{user.username}} <br>
+                  {{user.highScore}} <br>
+                  {{this.rank}}
+
                 </div>
                 <div class="col-sm-12 text-center">
-                    LEVEL GOES HERE
+                    {{user.experience/100}}
                 </div>
             </div>
 
         </div>
         <!-- game logo  -->
         <div class="col-md-12 text-center">
-            <img id="logo" src="../../../assets/img/TriviaLogo1.png">
+            <img id="logo" src="https://s3.us-east-2.amazonaws.com/trivia.reavature.com/img/TriviaLogo1.png">
         </div>
         <!-- guest menu nav  -->
         <nav class="col-md-12 text-center">
