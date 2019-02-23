@@ -170,7 +170,7 @@ export class PlayGameComponent implements OnInit {
       this.userAnswer = this.userAnswer.replace(/[^A-Z0-9]+/ig, "");
 
       //if clue answer is equal to user input answer, mark right, else mark wrong
-      if(this.userAnswer.includes(this.questionAnswerMin)){
+      if(this.userAnswer.includes(this.questionAnswerMin) || this.questionAnswerMin.includes(this.userAnswer)){
         console.log("Snitch, you guessin'!...... you was right.");
         //increase total score, total answered, and total right
         this.totalScore += this.questionsArrValue;
