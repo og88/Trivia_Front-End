@@ -17,7 +17,7 @@
 }
 
 #rank{
-    width: 50%;
+    width: 70px;
 }
 
 #profile-card{
@@ -25,6 +25,11 @@
     padding-bottom: 20px;
     border-bottom: 10px solid rgb(99, 63, 30);
     padding: 10px;
+}
+
+.profile-id-section{
+    display: inline-block;
+    width: 50%;
 }
 
 .game-stats{

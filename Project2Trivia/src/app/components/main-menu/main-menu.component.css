@@ -48,12 +48,17 @@
 }
 
 .addTopSpace{
-    margin-top: 70px;
+    margin-top: 110px;
 }
 
 #rank{
-    width: 100%;
+    width: 70px;
     transform: translate(20px,7px)
+}
+
+.profile-id-section{
+    display: inline-block;
+    width: 50%;
 }
 
 .btnTop{

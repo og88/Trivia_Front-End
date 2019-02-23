@@ -1,14 +1,14 @@
 
 <div class="container d-flex h-100">
-    <div class="row justify-content-center align-self-center">
+    <div class="row justify-content-center align-self-center addBottomSpace">
         <!-- profile card  -->
         <div class="col-md-12 text-center fixed-top" id="profile-card">
             
             <div class="row mt-2">
-                <div class="col-sm-3 text-center">
+                <div class="profile-id-section text-center">
                     <img id="rank" src="{{this.rank}}">
                 </div>
-                <div class="col-sm-9 text-center">
+                <div class="profile-id-section text-center">
 
                     {{user.username}} <br>
                     
@@ -19,11 +19,11 @@
             </div>
 
         </div>
-        <!-- game logo  -->
+        
         <div class="col-md-12 text-center addTopSpace">
             <img id="logo" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852751/trivia-hero/logo/TriviaLogo1.png">
         </div>
-        <!-- guest menu nav  -->
+        
         <div class="col-md-12 text-center">
             <input type="image" class="btnTop" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852545/trivia-hero/buttons/Button_Sm_Foreground_v1.png" routerLink="/play-game">
             <img class="btnBg" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852563/trivia-hero/buttons/Button_Sm_Background_v1.png">
@@ -39,7 +39,7 @@
             <img class="btnBg" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852563/trivia-hero/buttons/Button_Sm_Background_v1.png">
             <div class="btnTextSmX">Leaderboard</div>
         </div>
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center mb-5">
             <input type="image" class="btnTop" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852545/trivia-hero/buttons/Button_Sm_Foreground_v1.png" (click)="logout()" routerLink="/guest-menu">
             <img class="btnBg" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852563/trivia-hero/buttons/Button_Sm_Background_v1.png">
             <div class="btnTextSmX">Logout</div>
