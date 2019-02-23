@@ -1,0 +1,115 @@
+
+#guest-menu-container{
+    width: 100%;
+}
+
+#game-title{
+    display: block;
+    width: 300px;
+    color: blueviolet;
+}
+
+#logo{
+    width: 100%;
+}
+
+#guest-menu-nav{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10%;
+}
+
+.guest-menu-nav-link{
+    display: inline-block;
+    background-color: rgb(84, 24, 224);
+    color: rgb(224, 221, 24);
+    font-size: 2em;
+    width: 80%;
+    padding: 15px 0 15px 0;
+    margin: 5px 0 5px 0;
+    text-decoration: none;
+}
+
+.guest-menu-nav-link:hover{
+    background-color: rgb(70, 21, 184);
+}
+
+.cleanBtn{
+    background: none;
+    background-color: rgb(70, 21, 184, 0);
+
+}
+
+#guestBtnContainer{
+    display: block !important;
+    position: relative;
+    width: 100% !important;
+}
+
+#guestBtnTop{
+    z-index: 3 !important;
+    position: absolute;
+    width: 100%;
+    transition: ease 200ms;
+}
+
+#guestBtnTop:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+#guestBtnBg{
+    z-index: 2 !important;
+    position: absolute;
+    width: 100%;
+}
+
+#btnSword{
+    z-index: 1 !important;
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translate(-50%, 40%);
+    transition: ease 300ms;
+    width: 23%;
+}
+
+#guestBtnContainer:hover #btnSword{
+    transform: scale(1.8);
+    transform: translate(-50%, -10px);
+}
+
+#guestBtnText{
+    z-index: 4 !important;
+    position: absolute;
+    display: block;
+    top: 38px;
+    text-align: center;
+    font-size: 2em;
+    left: 50%;
+    transform: translate(-50%, 0);
+    pointer-events: none;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#guestBtnText:hover{
+    pointer-events: none;
+    cursor: pointer;
+}
+
+#guestBtnRegContainer{
+    display: block !important;
+    position: relative;
+    top: 0px;
+    width: 100% !important;
+}
+
+.guestBtnFontStyle{
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: .7em;
+}

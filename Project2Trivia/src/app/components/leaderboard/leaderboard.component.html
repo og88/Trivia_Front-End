@@ -1,0 +1,30 @@
+<div class="container d-flex h-100">
+    <div class="row justify-content-center align-self-center">
+      <!-- game logo  -->
+      <div class="col-md-12 text-center" id="game-title">
+        {{pageTitle}}
+      </div>
+      <!-- leaderboard table  -->
+      <div class="col-md-12 text-center">
+        <table class="table table-bordered table-dark">
+          <thead>
+            <th>#</th>
+            <th>Rank</th>
+            <th>User</th>
+            <th>Score</th>
+          </thead>
+          <tr *ngFor="let user of users; let i = index">
+              <td>{{i + 1}}</td>
+              <td>1</td>
+              <td>{{user.username}}</td>
+              <td>{{user.highScore}}</td>
+            </tr>
+        </table>
+      </div> 
+      <!-- register nav  -->
+      <div class="col-md-12 text-center">
+        <button class="btn btn-warning" routerLink="/main-menu">Back</button>
+      </div>
+    </div>
+  </div>
+  

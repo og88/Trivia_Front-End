@@ -1,0 +1,52 @@
+
+<div class="container d-flex h-100">
+    <div class="row justify-content-center align-self-center">
+        <!-- profile card  -->
+        <div class="col-md-12 text-center fixed-top" id="profile-card">
+            
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    USERNAME<br>
+                </div>
+                <div class="col-sm-12 text-center">
+                    RANK GOES HERE
+                </div>
+                <div class="col-sm-12 text-center">
+                    LEVEL GOES HERE
+                </div>
+                <div class="col-sm-12 text-center">
+                    TOTAL POINTS {{this.totalScore}}
+                </div>
+                <div class="col-sm-12 text-center">
+                    <ul id="health-bar">
+                        <li class="heart" *ngFor="let heart of this.healthBar">
+                            {{ heart }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!-- question category  -->
+        <div class="col-md-12 text-center">
+            <p>This question is worth {{this.questionsArrValue}} points!</p> 
+        </div>
+        <!-- game logo  -->
+        <div class="col-md-12 text-center">
+            {{this.questionsArrClue}} 
+        </div>
+        <!-- guest menu nav  -->
+        <nav class="col-md-12 text-center fixed-bottom">
+            <form>
+              <div class="form-group">
+                <input class="form-control" type="text" name="answerParam" [(ngModel)]="value" id="answer-param" placeholder="Enter your answer here!" autocomplete="off" required/>
+              </div>
+              <div class="form-group">
+                <input class="btn btn-primary" type="button" value="Attack!" (click)="confirmAnswer()">
+              </div>
+            </form>
+            <button class="btn btn-primary" (click)="leaveGame()" routerLink="/main-menu">Flee!</button>
+        </nav> 
+    </div>
+</div>
+      

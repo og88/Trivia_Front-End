@@ -1,0 +1,37 @@
+
+<div class="container d-flex h-100">
+    <div class="row justify-content-center align-self-center">
+        <!-- profile card  -->
+        <div class="col-md-12 text-center fixed-top" id="profile-card">
+            
+            <div class="row">
+                <div class="col-sm-3 text-center">
+                    {{this.rank}}
+                </div>
+                <div class="col-sm-9 text-center">
+
+                    {{user.username}} <br>
+                  {{user.highScore}} <br>
+                  {{this.rank}}
+
+                </div>
+                <div class="col-sm-12 text-center">
+                    {{user.experience/100}}
+                </div>
+            </div>
+
+        </div>
+        <!-- game logo  -->
+        <div class="col-md-12 text-center">
+            <img id="logo" src="https://s3.us-east-2.amazonaws.com/trivia.reavature.com/img/TriviaLogo1.png">
+        </div>
+        <!-- guest menu nav  -->
+        <nav class="col-md-12 text-center">
+            <button class="btn btn-primary" routerLink="/play-game">Play</button><br>
+            <button class="btn btn-primary" routerLink="/edit-profile">Edit Profile</button><br>
+            <button class="btn btn-primary" routerLink="/leaderboard">Leaderboard</button><br>
+            <button class="btn btn-primary" (click)="logout()" routerLink="/guest-menu">Logout</button>
+        </nav> 
+    </div>
+</div>
+      

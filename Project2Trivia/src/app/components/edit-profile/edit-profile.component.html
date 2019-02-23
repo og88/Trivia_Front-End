@@ -1,0 +1,34 @@
+<div class="container d-flex h-100">
+    <div class="row justify-content-center align-self-center">
+      <!-- game logo  -->
+      <div class="col-md-12 text-center" id="game-title">
+        {{title}}
+      </div>
+      <!-- register form  -->
+      <div class="col-md-12 text-center">
+        <form #updateForm="ngForm" (ngSubmit)="onEdit()">
+          <!-- {{ updateForm.value | json }} -->
+          <div class="form-group">
+            <input #username='ngModel' class="form-control" type="text" name="userParam" id="user-param"  [(ngModel)]='editObject.username' required/>
+          </div>
+          <div class="form-group">
+            <input #password='ngModel' class="form-control" type="password" name="passParam" id="pass-param" placeholder="Confirm Password" [(ngModel)]='editObject.password' required/>
+          </div>
+          <!-- <div class="form-group">
+            <input #confirmPass='ngModel' class="form-control" type="password" name="passConfirmParam" id="pass-confirm-param" [(ngModel)]='editObject.confirmPass' required/>
+          </div> -->
+          <div class="form-group">
+            <input #email='ngModel' class="form-control" type="email" name="emailParam" id="email-param" [(ngModel)]='editObject.email' required/>
+          </div>
+          <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Update">
+          </div>
+        </form>
+      </div> 
+      <!-- register nav  -->
+      <div class="col-md-12 text-center">
+        <button class="btn btn-warning" routerLink="/main-menu">Back</button>
+      </div>
+    </div>
+  </div>
+  
