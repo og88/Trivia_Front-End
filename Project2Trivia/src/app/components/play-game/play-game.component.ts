@@ -159,7 +159,7 @@ export class PlayGameComponent implements OnInit {
        // console.log("Total Right: " + this.totalRight);
        // console.log("Total Wrong: " + this.totalWrong);
       } else {
-        console.log("You is wrong, fam...");
+        //console.log("You is wrong, fam...");
         //increase total answered, total wrong; decrease healthPoints
         this.totalAnswered += 1;
         this.totalWrong += 1;
@@ -184,10 +184,10 @@ export class PlayGameComponent implements OnInit {
           //redirect to play-game-end component
           this.router.navigate(['/play-game-end']);
         }
-        console.log("Total Score: " + this.totalScore);
-        console.log("Total Answered: " + this.totalAnswered);
-        console.log("Total Right: " + this.totalRight);
-        console.log("Total Wrong: " + this.totalWrong);      
+        //console.log("Total Score: " + this.totalScore);
+        //console.log("Total Answered: " + this.totalAnswered);
+        //console.log("Total Right: " + this.totalRight);
+        //console.log("Total Wrong: " + this.totalWrong);      
       }
 
       //after user input, clear user input
@@ -208,7 +208,7 @@ export class PlayGameComponent implements OnInit {
 
       //else if user does not enter anything as an answer
     } else {
-      console.log("You've been attacked!");
+     // console.log("You've been attacked!");
       //decrease healthPoints
       this.healthPoints -= 1;
       this.healthBar = [];
@@ -240,23 +240,23 @@ export class PlayGameComponent implements OnInit {
 
     this.http.post(this.configUrl, this.questionStats)
         .subscribe(Response => {
-            console.log(Response);
+           // console.log(Response);
         });
 
       let tempU : User = JSON.parse(localStorage.getItem('currentUser'));
       tempU.username = this.user.username;
 
-        console.log('before ' + JSON.stringify(this.user));
+       // console.log('before ' + JSON.stringify(this.user));
         tempU.highScore = this.totalScore;
         tempU.experience = this.totalScore/(this.totalRight + 1);
-        console.log('After ' + JSON.stringify(this.user));
+       // console.log('After ' + JSON.stringify(this.user));
 
         this.configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/project2/rest/user/score/update';
         //this.configUrl = 'http://localhost:8080/project2/rest/user/score/update';
 
         this.http.post(this.configUrl, this.user)
         .subscribe(Response => {
-            console.log(Response);
+            //console.log(Response);
             if(this.user.highScore < this.totalScore){
               this.user.highScore = this.totalScore;
             }
