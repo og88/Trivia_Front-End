@@ -2,7 +2,7 @@
     <div class="row justify-content-center align-self-center">
       <!-- game logo  -->
       <div class="col-md-12 text-center" id="game-title">
-        {{title}}
+        <img id="logo" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852751/trivia-hero/logo/TriviaLogo1.png">
       </div>
       <!-- register form  -->
       <div class="col-md-12 text-center">
@@ -21,13 +21,20 @@
             <input #email='ngModel' class="form-control" type="email" name="emailParam" id="email-param" [(ngModel)]='editObject.email' required/>
           </div>
           <div class="form-group">
-            <input class="btn btn-primary" type="submit" value="Update">
+            <!--<input class="btn btn-primary" type="submit" value="Update">-->
           </div>
         </form>
       </div> 
       <!-- register nav  -->
       <div class="col-md-12 text-center">
-        <button class="btn btn-warning" routerLink="/main-menu">Back</button>
+        <input type="image" class="btnTop" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852545/trivia-hero/buttons/Button_Sm_Foreground_v1.png" (click)="onLogin()">
+        <img class="btnBg" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852563/trivia-hero/buttons/Button_Sm_Background_v1.png">
+        <div class="btnTextSm">Update</div>
+      </div>
+      <div class="col-md-12 text-center mt-1">
+          <input type="image" class="btnTop" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852545/trivia-hero/buttons/Button_Sm_Foreground_v1.png" routerLink="/main-menu">
+          <img class="btnBg" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852563/trivia-hero/buttons/Button_Sm_Background_v1.png">
+          <div class="btnTextSm">Back</div>
       </div>
     </div>
   </div>

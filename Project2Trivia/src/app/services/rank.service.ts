@@ -11,31 +11,31 @@ export class RankService {
         switch (true) {
             //bronze rank
             case (highscore < 1000): 
-                return "BRONZE";
+                return "https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852836/trivia-hero/ranks/Bronze.png";
                 break;
             //silver rank
             case (highscore >= 1000 && highscore < 1500):
-                return "SILVER";
+                return "https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852838/trivia-hero/ranks/Silver.png";
                 break;
             //gold rank
             case (highscore >= 1500 && highscore < 2000):
-                return "GOLD";
+                return "https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852839/trivia-hero/ranks/Gold.png";
                 break;
             //platinum rank
             case (highscore >= 2000 && highscore < 2500):
-                return "PLATINUM";
+                return "https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852839/trivia-hero/ranks/Platinum.png";
                 break;
             //diamond rank
             case (highscore >= 2500 && highscore < 3000):
-                return "DIAMOND";
+                return "https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852839/trivia-hero/ranks/Diamond.png";
                 break; 
             //master rank
             case (highscore >= 3000 && highscore < 3500):
-                return "MASTER";
+                return "https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852841/trivia-hero/ranks/Master.png";
                 break;
             //grandmaster rank
             case (highscore >= 3500):
-                return "GRANDMASTER";
+                return "https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852839/trivia-hero/ranks/Grandmaster.png";
                 break; 
             default:
                 return "Issue loading rank badge!";

@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 //imported models
 import {Currentgame} from '../../models/currentgame';
 import {QuestionTrack} from '../../models/question-track';
+import { User } from 'src/app/models/user';
 //imported services
 import {QuestionService} from '../../services/question.service';
+import { RankService } from 'src/app/services/rank.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from 'src/app/models/user';
 
 
 interface theQuestions {
@@ -19,6 +20,11 @@ interface theQuestions {
   styleUrls: ['./play-game.component.css']
 })
 export class PlayGameComponent implements OnInit {
+
+  user : User = JSON.parse(localStorage.getItem('currentUser'));
+
+  userHighscore: number = this.user.highScore;
+  rank: string = null;
 
   //title shown on page
   title: string = "Trivia Hero!";
@@ -50,11 +56,10 @@ export class PlayGameComponent implements OnInit {
   userAnswer: string;
   value: string;
 
-  user : User = JSON.parse(localStorage.getItem('currentUser'));
-
-  constructor(private _questionService: QuestionService, public router: Router, private http: HttpClient) { }
+  constructor(private _rankService: RankService, private _questionService: QuestionService, public router: Router, private http: HttpClient) { }
 
   ngOnInit() {
+    this.rank = this._rankService.getRank(this.userHighscore);
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.questions = this._questionService.getQuestion().subscribe(data => {
       this.questionsArr = data.clues;

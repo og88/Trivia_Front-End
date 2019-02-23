@@ -38,4 +38,77 @@
 
 #logo{
     width: 100%;
+    transform: scale(.9);
+}
+
+#profile-card{
+    background: url('https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550887977/trivia-hero/backgrounds/holz-background-6.jpg');
+    padding-bottom: 7px;
+    border-bottom: 10px solid rgb(99, 63, 30);
+}
+
+.addTopSpace{
+    margin-top: 70px;
+}
+
+#rank{
+    width: 100%;
+    transform: translate(20px,7px)
+}
+
+.btnTop{
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    transition: ease 300ms;
+}
+
+.btnTop:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.btnBg{
+    z-index: 1;
+    position: relative;
+    margin-top: 4px;
+    left: 0;
+    width: 100%;
+}
+
+.btnText{
+    z-index: 3;
+    position: absolute;
+    width: 100%;
+    font-size: 1.6em;
+    font-family: 'Press Start 2P', cursive !important;
+    color: #000;
+    text-transform: uppercase;
+    transform: translate(-3%, -68px);
+    pointer-events: none;
+}
+
+.btnTextSm{
+    z-index: 3;
+    position: absolute;
+    width: 100%;
+    font-size: 1.6em;
+    font-family: 'Press Start 2P', cursive !important;
+    color: #000;
+    text-transform: uppercase;
+    transform: translate(-3%, -50px);
+    pointer-events: none;
+}
+
+.btnTextSmX{
+    z-index: 3;
+    position: absolute;
+    width: 100%;
+    font-size: 1.2em;
+    font-family: 'Press Start 2P', cursive !important;
+    color: #000;
+    text-transform: uppercase;
+    transform: translate(-3%, -43px);
+    pointer-events: none;
 }

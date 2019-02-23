@@ -4,34 +4,46 @@
         <!-- profile card  -->
         <div class="col-md-12 text-center fixed-top" id="profile-card">
             
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col-sm-3 text-center">
-                    {{this.rank}}
+                    <img id="rank" src="{{this.rank}}">
                 </div>
                 <div class="col-sm-9 text-center">
 
                     {{user.username}} <br>
-                  {{user.highScore}} <br>
-                  {{this.rank}}
+                    
+                    Level {{user.experience/100}} <br>
+                    High Score: {{user.highScore}} 
 
-                </div>
-                <div class="col-sm-12 text-center">
-                    {{user.experience/100}}
                 </div>
             </div>
 
         </div>
         <!-- game logo  -->
-        <div class="col-md-12 text-center">
-            <img id="logo" src="https://s3.us-east-2.amazonaws.com/trivia.reavature.com/img/TriviaLogo1.png">
+        <div class="col-md-12 text-center addTopSpace">
+            <img id="logo" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852751/trivia-hero/logo/TriviaLogo1.png">
         </div>
         <!-- guest menu nav  -->
-        <nav class="col-md-12 text-center">
-            <button class="btn btn-primary" routerLink="/play-game">Play</button><br>
-            <button class="btn btn-primary" routerLink="/edit-profile">Edit Profile</button><br>
-            <button class="btn btn-primary" routerLink="/leaderboard">Leaderboard</button><br>
-            <button class="btn btn-primary" (click)="logout()" routerLink="/guest-menu">Logout</button>
-        </nav> 
+        <div class="col-md-12 text-center">
+            <input type="image" class="btnTop" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852545/trivia-hero/buttons/Button_Sm_Foreground_v1.png" routerLink="/play-game">
+            <img class="btnBg" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852563/trivia-hero/buttons/Button_Sm_Background_v1.png">
+            <div class="btnTextSm">Play</div>
+        </div>
+        <div class="col-md-12 text-center">
+            <input type="image" class="btnTop" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852545/trivia-hero/buttons/Button_Sm_Foreground_v1.png" routerLink="/edit-profile">
+            <img class="btnBg" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852563/trivia-hero/buttons/Button_Sm_Background_v1.png">
+            <div class="btnTextSm">Profile</div>
+        </div>
+        <div class="col-md-12 text-center">
+            <input type="image" class="btnTop" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852545/trivia-hero/buttons/Button_Sm_Foreground_v1.png" routerLink="/leaderboard">
+            <img class="btnBg" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852563/trivia-hero/buttons/Button_Sm_Background_v1.png">
+            <div class="btnTextSmX">Leaderboard</div>
+        </div>
+        <div class="col-md-12 text-center">
+            <input type="image" class="btnTop" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852545/trivia-hero/buttons/Button_Sm_Foreground_v1.png" (click)="logout()" routerLink="/guest-menu">
+            <img class="btnBg" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852563/trivia-hero/buttons/Button_Sm_Background_v1.png">
+            <div class="btnTextSmX">Logout</div>
+        </div>
     </div>
 </div>
       

@@ -2,18 +2,18 @@
 <div class="container d-flex h-100">
     <div class="row justify-content-center align-self-center">
         <!-- profile card  -->
-        <div class="col-md-12 text-center fixed-top" id="profile-card">
+        <div class="col-md-12 text-center fixed-top">
             
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    USERNAME {{user.username}}<br>
+            <div id="profile-card" class="row">
+                <div class="col-sm-6 text-center">
+                    <img id="rank" src="{{this.rank}}">
                 </div>
-                <div class="col-sm-12 text-center">
-                    RANK GOES HERE
+                <div class="col-sm-6 text-center">
+                    {{user.username}}<br>
+                    Level {{user.experience/100}}
                 </div>
-                <div class="col-sm-12 text-center">
-                    LEVEL GOES HERE
-                </div>
+            </div>
+            <div class="row game-stats">
                 <div class="col-sm-12 text-center">
                     TOTAL POINTS {{this.totalScore}}
                 </div>
@@ -28,7 +28,7 @@
 
         </div>
         <!-- question category  -->
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center" id="question">
             <p>This question is worth {{this.questionsArrValue}} points!</p> 
         </div>
         <!-- game logo  -->
@@ -42,10 +42,16 @@
                 <input class="form-control" type="text" name="answerParam" [(ngModel)]="value" id="answer-param" placeholder="Enter your answer here!" autocomplete="off" required/>
               </div>
               <div class="form-group">
-                <input class="btn btn-primary" type="button" value="Attack!" (click)="confirmAnswer()">
+                <input class="btnTop" type="image" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852545/trivia-hero/buttons/Button_Sm_Foreground_v1.png" (click)="confirmAnswer()">
+                <img class="btnBg" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852563/trivia-hero/buttons/Button_Sm_Background_v1.png">
+                <div class="btnTextSm">Attack!</div>
               </div>
             </form>
-            <button class="btn btn-primary" (click)="leaveGame()" routerLink="/main-menu">Flee!</button>
+            <div class="col-md-12 text-center mb-1">
+                <input type="image" class="btnTop" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852545/trivia-hero/buttons/Button_Sm_Foreground_v1.png" (click)="leaveGame()" routerLink="/main-menu">
+                <img class="btnBg" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852563/trivia-hero/buttons/Button_Sm_Background_v1.png">
+                <div class="btnTextSmX">Flee!</div>
+            </div>
         </nav> 
     </div>
 </div>

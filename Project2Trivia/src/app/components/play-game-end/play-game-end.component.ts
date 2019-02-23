@@ -9,12 +9,15 @@ import { User } from 'src/app/models/user';
 })
 export class PlayGameEndComponent implements OnInit {
 
+user : User = JSON.parse(localStorage.getItem('currentUser'));
+
+userHighscore: number = this.user.highScore;
+
 //to store recent game stats
 score: number;
 right: number;
 wrong: number;
 answered: number;
-user : User = JSON.parse(localStorage.getItem('currentUser'));
 
 constructor(public playGame: PlayGameComponent) { }
 
