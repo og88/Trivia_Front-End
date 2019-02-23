@@ -36,10 +36,7 @@ export class EditProfileComponent implements OnInit {
         'Access-Control-Allow-Origin': '*',
         "Access-Control-Allow-Methods" : "GET, OPTIONS, HEAD, PUT, POST"
       })
-    };
-
-    tempUser: JSON.parse(localStorage.getItem('currentUser'));
-    
+    };    
 
     const newLocal = this;
     console.log('User name ' + newLocal.editObject.username + ' password ' + newLocal.editObject.password + ' email ' + newLocal.editObject.email + 'Old User name' + JSON.parse(localStorage.currentUser).username);
@@ -49,9 +46,16 @@ export class EditProfileComponent implements OnInit {
       this.http.post<User>(this.configUrl, newLocal.editObject, httpOptions)
       .subscribe(Response => {
         if(Response != null){
+          
+          let temp : User = JSON.parse(localStorage.getItem('currentUser'));
+          temp.username = newLocal.editObject.username;
+          temp.email = newLocal.editObject.email;
+          localStorage.removeItem('currentUser');
+          localStorage.setItem('currentUser', JSON.stringify(temp));
           console.log(Response);
-          this.editObject.tempUsername=this.editObject.username;
-          console.log(this.editObject);
+          console.log('object', this.editObject);
+          console.log('localstorage', localStorage.getItem('currentUser'));
+
         }
       });
     } else {
