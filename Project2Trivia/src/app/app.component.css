@@ -10,6 +10,6 @@
     width: 100%;
     height: 640px !important; 
     background-color: rgb(28, 12, 71);   
-    background: url('../assets/img/TriviaHeroBg.png');
-    
+    background: url('https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550881477/trivia-hero/backgrounds/TriviaHeroBg.png');
+    border: 10px solid rgb(99, 63, 30);    
 }

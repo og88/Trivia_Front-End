@@ -35,3 +35,52 @@
 .guest-menu-nav-link:hover{
     background-color: rgb(70, 21, 184);
 }
+
+#logo{
+    width: 100%;
+}
+
+.btnTop{
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    transition: ease 300ms;
+}
+
+.btnTop:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.btnBg{
+    z-index: 1;
+    position: relative;
+    margin-top: 4px;
+    left: 0;
+    width: 100%;
+}
+
+.btnText{
+    z-index: 3;
+    position: absolute;
+    width: 100%;
+    font-size: 1.6em;
+    font-family: 'Press Start 2P', cursive !important;
+    color: #000;
+    text-transform: uppercase;
+    transform: translate(-3%, -68px);
+    pointer-events: none;
+}
+
+.btnTextSm{
+    z-index: 3;
+    position: absolute;
+    width: 100%;
+    font-size: 1.6em;
+    font-family: 'Press Start 2P', cursive !important;
+    color: #000;
+    text-transform: uppercase;
+    transform: translate(-3%, -50px);
+    pointer-events: none;
+}

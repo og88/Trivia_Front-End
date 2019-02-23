@@ -9,10 +9,7 @@
                   Game End!<br>
               </div>
               <div class="col-sm-12 text-center h2">
-                  USERNAME<br>
-              </div>
-              <div class="col-sm-12 text-center">
-                  LEVEL GOES HERE
+                {{user.username}}<br>
               </div>
               <div class="col-sm-12 text-center">
                   You've gained {{this.score}} XP!
@@ -22,7 +19,11 @@
       </div>
           <!-- guest menu nav  -->
         <nav class="col-md-12 text-center fixed-bottom">
-            <button class="btn btn-primary" (click)="clearGameStats()" routerLink="/main-menu">Ok!</button>
+            <div class="col-md-12 text-center mb-5">
+                <input type="image" class="btnTop" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852545/trivia-hero/buttons/Button_Sm_Foreground_v1.png" (click)="clearGameStats()" routerLink="/main-menu">
+                <img class="btnBg" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852563/trivia-hero/buttons/Button_Sm_Background_v1.png">
+                <div class="btnTextSmX">Ok!</div>
+            </div>
         </nav> 
     </div>
   </div>

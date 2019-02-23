@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayGameComponent } from '../play-game/play-game.component';
+import { User } from 'src/app/models/user';
+import {Currentgame} from '../../models/currentgame';
 
 @Component({
   selector: 'app-play-game-end',
@@ -7,6 +9,10 @@ import { PlayGameComponent } from '../play-game/play-game.component';
   styleUrls: ['./play-game-end.component.css']
 })
 export class PlayGameEndComponent implements OnInit {
+
+user : User = JSON.parse(localStorage.getItem('currentUser'));
+
+userHighscore: number = this.user.highScore;
 
 //to store recent game stats
 score: number;
