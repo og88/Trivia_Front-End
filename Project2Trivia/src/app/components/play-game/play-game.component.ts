@@ -63,7 +63,7 @@ export class PlayGameComponent implements OnInit {
   ngOnInit() {
     this.rank = this._rankService.getRank(this.userHighscore);
     this.user = JSON.parse(localStorage.getItem('currentUser'));
-    this.level = Math.ceil(this.user.experience/100000);
+    this.level = Math.ceil(this.user.experience/1000);
     this.questions = this._questionService.getQuestion().subscribe(data => {
       this.questionsArr = data.clues;
       //get first question on startup
