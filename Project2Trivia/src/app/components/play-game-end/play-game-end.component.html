@@ -9,13 +9,13 @@
                   Game End!<br>
               </div>
               <div class="col-sm-12 text-center h2">
-                  USERNAME<br>
+                {{user.username}}<br>
               </div>
               <div class="col-sm-12 text-center">
                   LEVEL GOES HERE
               </div>
               <div class="col-sm-12 text-center">
-                  You've gained {{this.score}} XP!
+                  You've gained {{this.score/(this.right + 1)}} XP!
               </div>
           </div>
   

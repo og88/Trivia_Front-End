@@ -17,8 +17,9 @@ export class MainMenuComponent implements OnInit {
 
   constructor(private _rankService: RankService) { }
 
-  ngOnInit() {
 
+  ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.rank = this._rankService.getRank(this.userHighscore);
 
   }
