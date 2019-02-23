@@ -20,15 +20,8 @@ export class LeaderboardComponent implements OnInit {
   //configUrl = 'http://localhost:8080/project2/rest/leader'
 
   ngOnInit() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-      'Access-Control-Allow-Origin': '*',
-      "Access-Control-Allow-Methods" : "GET, OPTIONS, HEAD, PUT, POST"
-      })
-    };
 
-    this.http.get<User[]>(this.configUrl, httpOptions)
+    this.http.get<User[]>(this.configUrl)
         .subscribe(Response => {
          this.users = Response;    
         });

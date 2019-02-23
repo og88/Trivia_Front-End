@@ -11,14 +11,16 @@ export class MainMenuComponent implements OnInit {
 
   title: string = "Trivia Hero!";
   user : User = JSON.parse(localStorage.getItem('currentUser'));
+  
 
   userHighscore: number = this.user.highScore;
   rank: string = null;
 
   constructor(private _rankService: RankService) { }
 
-  ngOnInit() {
 
+  ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.rank = this._rankService.getRank(this.userHighscore);
 
   }

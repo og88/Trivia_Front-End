@@ -6,6 +6,7 @@ import {QuestionTrack} from '../../models/question-track';
 import {QuestionService} from '../../services/question.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from 'src/app/models/user';
 
 
 interface theQuestions {
@@ -49,9 +50,12 @@ export class PlayGameComponent implements OnInit {
   userAnswer: string;
   value: string;
 
+  user : User = JSON.parse(localStorage.getItem('currentUser'));
+
   constructor(private _questionService: QuestionService, public router: Router, private http: HttpClient) { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.questions = this._questionService.getQuestion().subscribe(data => {
       this.questionsArr = data.clues;
       //get first question on startup
@@ -84,7 +88,7 @@ export class PlayGameComponent implements OnInit {
     this.questionsArrClue = this.questionsArr[this.questionsArrRandomIndex].question;
     this.questionsArrIndex = this.questionsArr[this.questionsArrRandomIndex].id;
     this.questionsArrCategory = this.questionsArr[this.questionsArrRandomIndex].category_id;
-    console.log(JSON.stringify(this.questionsArr[this.questionsArrRandomIndex]));
+    //console.log(JSON.stringify(this.questionsArr[this.questionsArrRandomIndex]));
 
     //if question contains 'video clue' remove it from the array and get a new question
     if(!this.questionsArrClue.includes("video clue")){
@@ -96,9 +100,9 @@ export class PlayGameComponent implements OnInit {
         this.questionsArrAnswer = this.questionsArrAnswer.replace("</i>", "");
       }
       this.questionAnswerMin = this.questionsArrAnswer.toLocaleLowerCase();
-      console.log("Turn answer to lowercase: " + this.questionAnswerMin);
+      //console.log("Turn answer to lowercase: " + this.questionAnswerMin);
       this.questionAnswerMin = this.questionAnswerMin.replace(/[^A-Z0-9]+/ig, "");
-      console.log("Remove whitespace from answer: " + this.questionAnswerMin);
+      //console.log("Remove whitespace from answer: " + this.questionAnswerMin);
 
       //store the value of the clue value
       this.questionsArrValue = this.questionsArr[this.questionsArrRandomIndex].value;
@@ -110,12 +114,12 @@ export class PlayGameComponent implements OnInit {
       this.questionsArr.splice(this.questionsArrRandomIndex, 1);
     
 
-      console.log("The current index is " + this.questionsArrRandomIndex);
-      console.log("The current question is: " + this.questionsArrClue);
-      console.log("The current answer is: " + this.questionsArrAnswer);
-      console.log("The current value is: " + this.questionsArrValue);
-      console.log("The current array length is: " + this.questionsArr.length);
-      console.log("Your current HP: " + this.healthPoints);
+      //console.log("The current index is " + this.questionsArrRandomIndex);
+     // console.log("The current question is: " + this.questionsArrClue);
+      //console.log("The current answer is: " + this.questionsArrAnswer);
+      //console.log("The current value is: " + this.questionsArrValue);
+      //console.log("The current array length is: " + this.questionsArr.length);
+      //console.log("Your current HP: " + this.healthPoints);
 
 
     } else {
@@ -138,17 +142,17 @@ export class PlayGameComponent implements OnInit {
 
       //if clue answer is equal to user input answer, mark right, else mark wrong
       if(this.userAnswer.includes(this.questionAnswerMin)){
-        console.log("Snitch, you guessin'!...... you was right.");
+        //console.log("Snitch, you guessin'!...... you was right.");
         //increase total score, total answered, and total right
         this.totalScore += this.questionsArrValue;
         this.totalAnswered += 1;
         this.totalRight += 1;
         //add question to question statistics array as right
         this.questionStats.push(new QuestionTrack(this.questionsArrIndex, this.questionsArrClue,this.questionsArrCategory, 1, 0, this.questionsArrValue));
-        console.log("Total Score: " + this.totalScore);
-        console.log("Total Answered: " + this.totalAnswered);
-        console.log("Total Right: " + this.totalRight);
-        console.log("Total Wrong: " + this.totalWrong);
+        //console.log("Total Score: " + this.totalScore);
+       // console.log("Total Answered: " + this.totalAnswered);
+       // console.log("Total Right: " + this.totalRight);
+       // console.log("Total Wrong: " + this.totalWrong);
       } else {
         console.log("You is wrong, fam...");
         //increase total answered, total wrong; decrease healthPoints
@@ -163,7 +167,7 @@ export class PlayGameComponent implements OnInit {
         //add question to question statistics array as wrong
         this.questionStats.push(new QuestionTrack(this.questionsArrIndex, this.questionsArrClue,this.questionsArrCategory, 0, 1, this.questionsArrValue));
         var score = this.totalScore; var right = this.totalRight; var wrong = this.totalWrong; var answered = this.totalAnswered;
-        console.log("The stored variables are " + score + ", " + right + ", " + wrong + ", " + answered);
+       // console.log("The stored variables are " + score + ", " + right + ", " + wrong + ", " + answered);
         //if health reaches 0, create currentgame object and store current game stats inside
         //store object in localStorage to be used in the next component
         if(this.healthPoints <= 0){
@@ -227,11 +231,33 @@ export class PlayGameComponent implements OnInit {
   configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/project2/rest/question/counter';
 
   UpdateQuestion(){
-    console.log("End of GAME \n"+JSON.stringify(this.questionStats));
+    //console.log("End of GAME \n"+JSON.stringify(this.questionStats));
 
     this.http.post(this.configUrl, this.questionStats)
         .subscribe(Response => {
             console.log(Response);
+        });
+
+      let tempU : User = JSON.parse(localStorage.getItem('currentUser'));
+      tempU.username = this.user.username;
+
+        console.log('before ' + JSON.stringify(this.user));
+        tempU.highScore = this.totalScore;
+        tempU.experience = this.totalScore/(this.totalRight + 1);
+        console.log('After ' + JSON.stringify(this.user));
+
+        this.configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/project2/rest/user/score/update';
+        //this.configUrl = 'http://localhost:8080/project2/rest/user/score/update';
+
+        this.http.post(this.configUrl, this.user)
+        .subscribe(Response => {
+            console.log(Response);
+            if(this.user.highScore < this.totalScore){
+              this.user.highScore = this.totalScore;
+            }
+            this.user.experience += tempU.experience;
+              localStorage.removeItem("currentUser");
+              localStorage.setItem('currentUser', JSON.stringify(this.user));
         });
   }
   leaveGame(){

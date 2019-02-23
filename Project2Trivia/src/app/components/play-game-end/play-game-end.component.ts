@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayGameComponent } from '../play-game/play-game.component';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-play-game-end',
@@ -13,6 +14,7 @@ score: number;
 right: number;
 wrong: number;
 answered: number;
+user : User = JSON.parse(localStorage.getItem('currentUser'));
 
 constructor(public playGame: PlayGameComponent) { }
 
