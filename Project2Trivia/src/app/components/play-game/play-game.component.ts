@@ -25,6 +25,8 @@ export class PlayGameComponent implements OnInit {
 
   userHighscore: number = this.user.highScore;
   rank: string = null;
+  level: number;
+
 
   //title shown on page
   title: string = "Trivia Hero!";
@@ -61,6 +63,7 @@ export class PlayGameComponent implements OnInit {
   ngOnInit() {
     this.rank = this._rankService.getRank(this.userHighscore);
     this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.level = Math.ceil(this.user.experience/100000);
     this.questions = this._questionService.getQuestion().subscribe(data => {
       this.questionsArr = data.clues;
       //get first question on startup
