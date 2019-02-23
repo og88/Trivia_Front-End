@@ -21,6 +21,12 @@ import { PlayGameEndComponent } from './components/play-game-end/play-game-end.c
 import { QuestionService } from './services/question.service';
 import { RankService } from './services/rank.service';
 import { LayoutImagesService } from './services/layout-images.service';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { QuestionStatisticsComponent } from './components/question-statistics/question-statistics.component';
+import { ScoreStatisticsComponent } from './components/score-statistics/score-statistics.component';
+import { GooglePieChartService } from './services/google-pie-charts.service';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +38,11 @@ import { LayoutImagesService } from './services/layout-images.service';
     MainMenuComponent,
     EditProfileComponent,
     PlayGameComponent,
-    PlayGameEndComponent
+    PlayGameEndComponent,
+    StatisticsComponent,
+    QuestionStatisticsComponent,
+    ScoreStatisticsComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +54,8 @@ import { LayoutImagesService } from './services/layout-images.service';
     QuestionService,
     PlayGameComponent,
     RankService,
-    LayoutImagesService
+    LayoutImagesService,
+    GooglePieChartService
   ],
   bootstrap: [AppComponent]
 })
