@@ -6,7 +6,7 @@
       </div>
       <!-- register form  -->
       <div class="col-md-12 text-center">
-        <form #updateForm="ngForm" (ngSubmit)="onEdit()">
+        <form #updateForm="ngForm">
           <!-- {{ updateForm.value | json }} -->
           <div class="form-group">
             <input #username='ngModel' class="form-control" type="text" name="userParam" id="user-param"  [(ngModel)]='editObject.username' required/>
@@ -27,7 +27,7 @@
       </div> 
       <!-- register nav  -->
       <div class="col-md-12 text-center">
-        <input type="image" class="btnTop" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852545/trivia-hero/buttons/Button_Sm_Foreground_v1.png" (click)="onLogin()">
+        <input type="image" class="btnTop" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852545/trivia-hero/buttons/Button_Sm_Foreground_v1.png" (click)="onEdit()">
         <img class="btnBg" src="https://res.cloudinary.com/dm1h6zjdu/image/upload/v1550852563/trivia-hero/buttons/Button_Sm_Background_v1.png">
         <div class="btnTextSm">Update</div>
       </div>

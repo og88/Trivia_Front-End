@@ -30,20 +30,13 @@ export class EditProfileComponent implements OnInit {
   //configUrl = 'http://localhost:8085/project2/rest/user/update'
   onEdit(){
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Access-Control-Allow-Origin': '*',
-        "Access-Control-Allow-Methods" : "GET, OPTIONS, HEAD, PUT, POST"
-      })
-    };    
 
     const newLocal = this;
     console.log('User name ' + newLocal.editObject.username + ' password ' + newLocal.editObject.password + ' email ' + newLocal.editObject.email + 'Old User name' + JSON.parse(localStorage.currentUser).username);
     if(newLocal.editObject.password !=''){
       
       console.log(this.editObject);
-      this.http.post<User>(this.configUrl, newLocal.editObject, httpOptions)
+      this.http.post<User>(this.configUrl, newLocal.editObject)
       .subscribe(Response => {
         if(Response != null){
           
@@ -55,6 +48,7 @@ export class EditProfileComponent implements OnInit {
           console.log(Response);
           console.log('object', this.editObject);
           console.log('localstorage', localStorage.getItem('currentUser'));
+          this.router.navigate(['/main-menu']);
 
         }
       });

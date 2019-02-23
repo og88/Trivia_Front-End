@@ -5,17 +5,19 @@
         <table class="table table-bordered" id="leaderboardTable">
           <thead class="fill">
             <tr>
-              <th>#</th>
+              <th width="40">#</th>
               <th>User</th>
               <th>Score</th>
             </tr>
           </thead>
           <tbody>
+            <div id="tbodyWrapper">
             <tr *ngFor="let user of users; let i = index">
-              <td>{{i + 1}}</td>
+              <td width="40">{{i + 1}}</td>
               <td>{{user.username}}</td>
               <td>{{user.highScore}}</td>
             </tr>
+          </div>
           </tbody>
         </table>
       </div> 
