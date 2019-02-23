@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //imported models
-import {Currentgame} from '../../models/currentgame';
+import { Currentgame } from '../../models/currentgame';
 import {QuestionTrack} from '../../models/question-track';
 import { User } from 'src/app/models/user';
 //imported services
@@ -226,6 +226,14 @@ export class PlayGameComponent implements OnInit {
         //localStorage.setItem("questionStats", JSON.stringify(this.questionStats));
         //send POST request to update database with question stats
         //redirect to play-game-end component
+        this.router.navigate(['/play-game-end']);
+      }
+      //if there are no more questtion in the array
+      if(this.questionsArr.length == 0){
+        this.UpdateQuestion();
+        var score = this.totalScore; var right = this.totalRight; var wrong = this.totalWrong; var answered = this.totalAnswered;
+        var gamestats = new Currentgame(score, right, wrong, answered);
+        localStorage.setItem("currentGame", JSON.stringify(gamestats));
         this.router.navigate(['/play-game-end']);
       }
       this.getNewQuestion();
