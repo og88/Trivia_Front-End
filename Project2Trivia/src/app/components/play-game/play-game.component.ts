@@ -23,6 +23,8 @@ export class PlayGameComponent implements OnInit {
 
   user : User = JSON.parse(localStorage.getItem('currentUser'));
 
+  userLevel: number;
+  
   userHighscore: number = this.user.highScore;
   rank: string = null;
   level: number;
@@ -62,8 +64,9 @@ export class PlayGameComponent implements OnInit {
 
   ngOnInit() {
     this.rank = this._rankService.getRank(this.userHighscore);
-    this.user = JSON.parse(localStorage.getItem('currentUser'));
-    this.level = Math.ceil(this.user.experience/1000);
+
+    this.userLevel = Math.ceil(this.user.experience / 1000);
+
     this.questions = this._questionService.getQuestion().subscribe(data => {
       this.questionsArr = data.clues;
       //get first question on startup
@@ -108,7 +111,17 @@ export class PlayGameComponent implements OnInit {
         this.questionsArrAnswer = this.questionsArrAnswer.replace("</i>", "");
       }
       this.questionAnswerMin = this.questionsArrAnswer.toLocaleLowerCase();
-      //console.log("Turn answer to lowercase: " + this.questionAnswerMin);
+      console.log("Turn answer to lowercase: " + this.questionAnswerMin);
+      //if clue contains an article, remove it
+      if(this.questionsArrAnswer.includes("the ")){
+        this.questionsArrAnswer = this.questionsArrAnswer.replace("the ", "");
+      }
+      if(this.questionsArrAnswer.includes("an ")){
+        this.questionsArrAnswer = this.questionsArrAnswer.replace("an ", "");
+      }
+      if(this.questionsArrAnswer.includes("a ")){
+        this.questionsArrAnswer = this.questionsArrAnswer.replace("a ", "");
+      }
       this.questionAnswerMin = this.questionAnswerMin.replace(/[^A-Z0-9]+/ig, "");
       //console.log("Remove whitespace from answer: " + this.questionAnswerMin);
 
@@ -146,10 +159,20 @@ export class PlayGameComponent implements OnInit {
     if(this.value != "" && this.value != null){
       //change user input to lowercase and get rid of whitespace and special characters
       this.userAnswer = this.userAnswer.toLocaleLowerCase();
+      //if clue contains an article, remove it
+      if(this.userAnswer.includes("the ")){
+        this.userAnswer = this.userAnswer.replace("the ", "");
+      }
+      if(this.userAnswer.includes("an ")){
+        this.userAnswer = this.userAnswer.replace("an ", "");
+      }
+      if(this.userAnswer.includes("a ")){
+        this.userAnswer = this.userAnswer.replace("a ", "");
+      }
       this.userAnswer = this.userAnswer.replace(/[^A-Z0-9]+/ig, "");
 
       //if clue answer is equal to user input answer, mark right, else mark wrong
-      if(this.userAnswer.includes(this.questionAnswerMin)){
+      if(this.userAnswer.includes(this.questionAnswerMin) || this.questionAnswerMin.includes(this.userAnswer)){
         //console.log("Snitch, you guessin'!...... you was right.");
         //increase total score, total answered, and total right
         this.totalScore += this.questionsArrValue;

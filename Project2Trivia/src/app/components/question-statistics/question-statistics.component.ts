@@ -18,8 +18,8 @@ export class QuestionStatisticsComponent {
 
   constructor(private http : HttpClient) { }
 
-  //configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/project2/rest/questions';
-  configUrl = 'http://localhost:8080/project2/rest/questions';
+  configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/project2/rest/questions';
+  //configUrl = 'http://localhost:8080/project2/rest/questions';
 
   data1: any[];
   config1: PieChartConfig;
@@ -35,21 +35,26 @@ export class QuestionStatisticsComponent {
 
     this.http.get<any[]>(this.configUrl)
         .subscribe(Response => {
-         this.questions = Response;    
+         console.log(Response);
+         this.questions = Response; 
+         this.UpdateCharts();   
         });
 
-
-        console.log(this.questions[0]);
-    //Piechart1 Data & Config
-    this.data1 = [['Task', 'Hours per Day'],
-    ['Eat',      3],
-    ['Commute',  2],
-    ['Watch TV', 5],
-    ['Video games', 4],
-    ['Sleep',    10]];
-
-    this.config1 = new PieChartConfig('Percentage of correct responses', 0.4);
-    this.elementId1 = 'myPieChart1';
   }
 
+
+
+UpdateCharts(){
+  //console.log(" The questions " + this.questions);
+  //Piechart1 Data & Config
+  this.data1 = [['Task', 'Hours per Day'],
+  ['Eat',      3],
+  ['Commute',  2],
+  ['Watch TV', 5],
+  ['Video games', 4],
+  ['Sleep',    10]];
+
+  this.config1 = new PieChartConfig('Percentage of correct responses', 0.4);
+  this.elementId1 = 'myPieChart1';
+}
 }
