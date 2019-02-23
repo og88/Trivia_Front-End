@@ -117,3 +117,17 @@
     transform: translate(-3%, -43px);
     pointer-events: none;
 }
+
+.btnTextSmXSpec{
+    z-index: 3;
+    position: absolute;
+    width: 100%;
+    font-size: .5em;
+    font-family: 'Press Start 2P', cursive !important;
+    color: #000;
+    text-transform: uppercase;
+    transform: translate(-3%, -43px);
+}
+.btnTextSmXSpec:hover{
+    cursor: pointer;
+}

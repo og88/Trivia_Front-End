@@ -8,6 +8,8 @@ import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { PlayGameComponent } from './components/play-game/play-game.component';
 import { PlayGameEndComponent } from './components/play-game-end/play-game-end.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { QuestionStatisticsComponent } from './components/question-statistics/question-statistics.component';
 
 const routes: Route[] = [
 {
@@ -47,6 +49,10 @@ const routes: Route[] = [
 {
     path: "play-game-end",
     component: PlayGameEndComponent
+},
+{
+    path: "question-statistics",
+    component: QuestionStatisticsComponent
 }
 ];
 
