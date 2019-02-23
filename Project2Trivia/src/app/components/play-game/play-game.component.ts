@@ -254,17 +254,15 @@ export class PlayGameComponent implements OnInit {
       let tempU : User = JSON.parse(localStorage.getItem('currentUser'));
       tempU.username = this.user.username;
 
-       // console.log('before ' + JSON.stringify(this.user));
         tempU.highScore = this.totalScore;
-        tempU.experience = this.totalScore/(this.totalRight + 1);
-       // console.log('After ' + JSON.stringify(this.user));
+        tempU.experience = Math.ceil(this.totalScore/(this.totalRight + 1));
 
         this.configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/project2/rest/user/score/update';
         //this.configUrl = 'http://localhost:8080/project2/rest/user/score/update';
 
-        this.http.post(this.configUrl, this.user)
+        this.http.post(this.configUrl, tempU)
         .subscribe(Response => {
-            //console.log(Response);
+            console.log(Response);
             if(this.user.highScore < this.totalScore){
               this.user.highScore = this.totalScore;
             }

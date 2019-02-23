@@ -14,6 +14,8 @@ export class MainMenuComponent implements OnInit {
 
   userHighscore: number = this.user.highScore;
   rank: string = null;
+  level: number;
+  
 
   constructor(private _rankService: RankService) { }
 
@@ -21,6 +23,7 @@ export class MainMenuComponent implements OnInit {
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.rank = this._rankService.getRank(this.userHighscore);
+    this.level = Math.ceil(this.user.experience/100000);
 
   }
 
