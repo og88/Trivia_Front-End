@@ -18,12 +18,15 @@ score: number;
 right: number;
 wrong: number;
 answered: number;
+level: number;
 
 constructor(public playGame: PlayGameComponent) { }
 
 ngOnInit() {
 
   var currentGame = JSON.parse(localStorage.getItem("currentGame"));
+  this.level = Math.ceil(this.user.experience/1000);
+
 
   this.answered = currentGame.answered;
   this.score = currentGame.score;
