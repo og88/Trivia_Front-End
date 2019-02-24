@@ -36,28 +36,18 @@ export class RegisterComponent implements OnInit {
 
     const newLocal = this;
 
-    //console.log('User name ' + newLocal.registerObj.username + ' password ' + newLocal.registerObj.password + ' email ' + newLocal.registerObj.email);
     if(newLocal.registerObj.username != ''){
       if(newLocal.registerObj.password !=''){
         if(newLocal.registerObj.email !=''){
-      //  console.log('works');
-        //console.log(this.registerObj);
         this.http.post<User>(this.configUrl, newLocal.registerObj, httpOptions)
         .subscribe(Response => {
           if(Response.username == this.registerObj.username){
-          //  console.log(Response);
             localStorage.setItem('currentUser', JSON.stringify(Response));
             this.router.navigate(["/main-menu"])
           }
         });
-        } else{
-         // console.log("failed");
-        }
-      } else {
-     //   console.log('failed');
-      }
-    } else {
-   //   console.log('failed');
-    }
+        } 
+      } 
+    } 
   }
 }

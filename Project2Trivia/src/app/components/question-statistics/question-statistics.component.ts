@@ -33,7 +33,6 @@ export class QuestionStatisticsComponent {
 
     this.http.get<any[]>(this.configUrl)
         .subscribe(Response => {
-        // console.log(Response);
          this.questions = Response; 
          this.UpdateCharts();   
         });
@@ -43,16 +42,7 @@ export class QuestionStatisticsComponent {
 
 
 UpdateCharts(){
-  //console.log(" The questions " + this.questions);
-  //Piechart1 Data & Config
 
-  // for(let i = 0; i < this.questions.length; i++){
-  //   console.log(this.questions[i]);
-  //   this.dataArray.push([['Correct', 'Incorrect'],
-  //   ['Correct',      this.questions[0].correctCount],
-  //   ['Incorrect',  this.questions[0].incorrectCount]]);
-  //   console.log(this.dataArray[i]);
-  // }
   
   this.data1 = [['Correct', 'Incorrect'],
      ['Correct',      this.questions[0].correctCount],
@@ -63,7 +53,6 @@ UpdateCharts(){
 }
 
 getData(i : number){
-  //console.log(i);
   localStorage.setItem('question', JSON.stringify(this.questions[i]));
   this.router.navigate(["/statistics"])
 

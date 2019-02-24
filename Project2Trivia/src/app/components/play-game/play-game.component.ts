@@ -99,7 +99,6 @@ export class PlayGameComponent implements OnInit {
     this.questionsArrClue = this.questionsArr[this.questionsArrRandomIndex].question;
     this.questionsArrIndex = this.questionsArr[this.questionsArrRandomIndex].id;
     this.questionsArrCategory = this.questionsArr[this.questionsArrRandomIndex].category_id;
-    //console.log(JSON.stringify(this.questionsArr[this.questionsArrRandomIndex]));
 
     //if question contains 'video clue' remove it from the array and get a new question
     if(!this.questionsArrClue.includes("video clue")){
@@ -111,7 +110,6 @@ export class PlayGameComponent implements OnInit {
         this.questionsArrAnswer = this.questionsArrAnswer.replace("</i>", "");
       }
       this.questionAnswerMin = this.questionsArrAnswer.toLocaleLowerCase();
-      console.log("Turn answer to lowercase: " + this.questionAnswerMin);
       //if clue contains an article, remove it
       if(this.questionsArrAnswer.includes("the ")){
         this.questionsArrAnswer = this.questionsArrAnswer.replace("the ", "");
@@ -123,7 +121,6 @@ export class PlayGameComponent implements OnInit {
         this.questionsArrAnswer = this.questionsArrAnswer.replace("a ", "");
       }
       this.questionAnswerMin = this.questionAnswerMin.replace(/[^A-Z0-9]+/ig, "");
-      //console.log("Remove whitespace from answer: " + this.questionAnswerMin);
 
       //store the value of the clue value
       this.questionsArrValue = this.questionsArr[this.questionsArrRandomIndex].value;
@@ -133,14 +130,6 @@ export class PlayGameComponent implements OnInit {
       }
       //remove current question from array to avoid duplicates
       this.questionsArr.splice(this.questionsArrRandomIndex, 1);
-    
-
-      //console.log("The current index is " + this.questionsArrRandomIndex);
-     // console.log("The current question is: " + this.questionsArrClue);
-      //console.log("The current answer is: " + this.questionsArrAnswer);
-      //console.log("The current value is: " + this.questionsArrValue);
-      //console.log("The current array length is: " + this.questionsArr.length);
-      //console.log("Your current HP: " + this.healthPoints);
 
 
     } else {
@@ -173,19 +162,13 @@ export class PlayGameComponent implements OnInit {
 
       //if clue answer is equal to user input answer, mark right, else mark wrong
       if(this.userAnswer.includes(this.questionAnswerMin) || this.questionAnswerMin.includes(this.userAnswer)){
-        //console.log("Snitch, you guessin'!...... you was right.");
         //increase total score, total answered, and total right
         this.totalScore += this.questionsArrValue;
         this.totalAnswered += 1;
         this.totalRight += 1;
         //add question to question statistics array as right
         this.questionStats.push(new QuestionTrack(this.questionsArrIndex, this.questionsArrClue,this.questionsArrCategory, 1, 0, this.questionsArrValue));
-        //console.log("Total Score: " + this.totalScore);
-       // console.log("Total Answered: " + this.totalAnswered);
-       // console.log("Total Right: " + this.totalRight);
-       // console.log("Total Wrong: " + this.totalWrong);
       } else {
-        //console.log("You is wrong, fam...");
         //increase total answered, total wrong; decrease healthPoints
         this.totalAnswered += 1;
         this.totalWrong += 1;
@@ -198,7 +181,6 @@ export class PlayGameComponent implements OnInit {
         //add question to question statistics array as wrong
         this.questionStats.push(new QuestionTrack(this.questionsArrIndex, this.questionsArrClue,this.questionsArrCategory, 0, 1, this.questionsArrValue));
         var score = this.totalScore; var right = this.totalRight; var wrong = this.totalWrong; var answered = this.totalAnswered;
-       // console.log("The stored variables are " + score + ", " + right + ", " + wrong + ", " + answered);
         //if health reaches 0, create currentgame object and store current game stats inside
         //store object in localStorage to be used in the next component
         if(this.healthPoints <= 0){
@@ -209,11 +191,7 @@ export class PlayGameComponent implements OnInit {
           //send POST request to update database with question stats
           //redirect to play-game-end component
           this.router.navigate(['/play-game-end']);
-        }
-        //console.log("Total Score: " + this.totalScore);
-        //console.log("Total Answered: " + this.totalAnswered);
-        //console.log("Total Right: " + this.totalRight);
-        //console.log("Total Wrong: " + this.totalWrong);      
+        }   
       }
 
       //after user input, clear user input
@@ -234,7 +212,6 @@ export class PlayGameComponent implements OnInit {
 
       //else if user does not enter anything as an answer
     } else {
-     // console.log("You've been attacked!");
       //decrease healthPoints
       this.healthPoints -= 1;
       this.healthBar = [];
@@ -270,11 +247,8 @@ export class PlayGameComponent implements OnInit {
   configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/project2/rest/question/counter';
 
   UpdateQuestion(){
-    //console.log("End of GAME \n"+JSON.stringify(this.questionStats));
-
     this.http.post(this.configUrl, this.questionStats)
         .subscribe(Response => {
-           // console.log(Response);
         });
 
       let tempU : User = JSON.parse(localStorage.getItem('currentUser'));
@@ -288,7 +262,6 @@ export class PlayGameComponent implements OnInit {
 
         this.http.post(this.configUrl, tempU)
         .subscribe(Response => {
-            console.log(Response);
             if(this.user.highScore < this.totalScore){
               this.user.highScore = this.totalScore;
             }

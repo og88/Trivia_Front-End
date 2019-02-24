@@ -39,17 +39,6 @@ export class StatisticsComponent {
 
 
 UpdateCharts(){
-  //console.log(" The questions " + this.questions);
-  //Piechart1 Data & Config
-
-  // for(let i = 0; i < this.questions.length; i++){
-  //   console.log(this.questions[i]);
-  //   this.dataArray.push([['Correct', 'Incorrect'],
-  //   ['Correct',      this.questions[0].correctCount],
-  //   ['Incorrect',  this.questions[0].incorrectCount]]);
-  //   console.log(this.dataArray[i]);
-  // }
-  
   this.data1 = [['Correct', 'Incorrect'],
      ['Correct',     this.question.correctCount],
      ['Incorrect',  this.question.incorrectCount]];

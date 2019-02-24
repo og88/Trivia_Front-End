@@ -32,10 +32,8 @@ export class EditProfileComponent implements OnInit {
 
 
     const newLocal = this;
-    //console.log('User name ' + newLocal.editObject.username + ' password ' + newLocal.editObject.password + ' email ' + newLocal.editObject.email + 'Old User name' + JSON.parse(localStorage.currentUser).username);
     if(newLocal.editObject.password !=''){
       
-      //console.log(this.editObject);
       this.http.post<User>(this.configUrl, newLocal.editObject)
       .subscribe(Response => {
         if(Response != null){
@@ -45,15 +43,11 @@ export class EditProfileComponent implements OnInit {
           temp.email = newLocal.editObject.email;
           localStorage.removeItem('currentUser');
           localStorage.setItem('currentUser', JSON.stringify(temp));
-         // console.log(Response);
-         // console.log('object', this.editObject);
-          //console.log('localstorage', localStorage.getItem('currentUser'));
           this.router.navigate(['/main-menu']);
 
         }
       });
     } else {
-      //console.log("failed")
     }
   }
 }
