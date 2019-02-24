@@ -2,21 +2,16 @@
   <div class="row justify-content-center align-self-center">
 
     <!-- title -->
-  
-<div class="col-md-12 text-center" id="game-title">
-  {{title}}
-</div>
 
     <!-- questions table  -->
     <div class="col-md-12 text-center">
-      <table class="table table-bordered table-dark">
+      <table class="table table-bordered table-dark w-100">
         <thead>
           <th>Question</th>
-          <th>Percentage Correct</th>
         </thead>
         <tr *ngFor="let question of questions; let i = index">
             <td>{{question.question}}</td>
-            <td><div class="col-md-12 text-center"><button class="btn btn-warning" (click)="getData(i)">Data</button></div></td>
+            <td><div class="col-md-12 text-center"><button class="btn btn-primary" (click)="getData(i)">Details</button></div></td>
             <!--<td><pie-chart [data]="data1" [config]="config1" [elementId]="elementId"></pie-chart></td>-->
             <!---data1 = [['Correct', 'Incorrect'],
   ['Correct',      question.Correct],
