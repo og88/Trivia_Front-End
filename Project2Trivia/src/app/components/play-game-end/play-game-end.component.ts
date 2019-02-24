@@ -19,19 +19,21 @@ right: number;
 wrong: number;
 answered: number;
 level: number;
+experience: number;
 
 constructor(public playGame: PlayGameComponent) { }
 
 ngOnInit() {
 
   var currentGame = JSON.parse(localStorage.getItem("currentGame"));
-  this.level = Math.ceil(this.user.experience/1000);
-
 
   this.answered = currentGame.answered;
   this.score = currentGame.score;
   this.right = currentGame.right;
   this.wrong = currentGame.wrong;
+
+  this.level = Math.ceil(this.user.experience/1000);
+  this.experience = Math.ceil(this.score/(this.right + 1));
 
   this.clearGameStats();
 }
