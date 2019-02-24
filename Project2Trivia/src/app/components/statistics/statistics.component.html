@@ -7,20 +7,23 @@
       {{title}}
     </div>
 
+    <pie-chart [data]="data1" [config]="config1" [elementId]="elementId"></pie-chart>
+
     <!-- statistics buttons -->
 
-    <div class="col-md-12 text-center">
+    <!--<div class="col-md-12 text-center">
       <nav class="col-md-12 text-center">
         <button class="btn btn-primary" routerLink="/score-statistics">My Score Statistics</button><br>
         <button class="btn btn-primary" routerLink="/question-statistics">Question Statistics</button><br>
       </nav> 
+    </div>-->
 
     <!-- back button -->      
 
     <div class="col-md-12 text-center">
-      <button class="btn btn-warning" routerLink="/main-menu">Back</button>
+      <button class="btn btn-warning" routerLink="/question-statistics">Back</button>
     </div>
 
-    </div> 
+     
   </div>
 </div>

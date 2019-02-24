@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/models/user';
 import {QuestionTrack} from 'src/app/models/question-track';
+import { Router } from '@angular/router';
 
 
 
@@ -11,23 +12,20 @@ import {QuestionTrack} from 'src/app/models/question-track';
   styleUrls: ['./question-statistics.component.css']
 })
 export class QuestionStatisticsComponent {
-  title = 'Reusable charts sample';
+  title = 'Question Statistics';
 
   users : User[];
   questions: QuestionTrack[];
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, public router: Router) { }
 
   configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/project2/rest/questions';
   //configUrl = 'http://localhost:8080/project2/rest/questions';
 
   data1: any[];
   config1: PieChartConfig;
-  elementId1: String;
-
-  data2: any[];
-  config2: PieChartConfig;
-  elementId2: String;
+  elementId: String;
+  dataArray: any[];
   
 
   
@@ -35,7 +33,7 @@ export class QuestionStatisticsComponent {
 
     this.http.get<any[]>(this.configUrl)
         .subscribe(Response => {
-         console.log(Response);
+        // console.log(Response);
          this.questions = Response; 
          this.UpdateCharts();   
         });
@@ -47,14 +45,27 @@ export class QuestionStatisticsComponent {
 UpdateCharts(){
   //console.log(" The questions " + this.questions);
   //Piechart1 Data & Config
-  this.data1 = [['Task', 'Hours per Day'],
-  ['Eat',      3],
-  ['Commute',  2],
-  ['Watch TV', 5],
-  ['Video games', 4],
-  ['Sleep',    10]];
+
+  // for(let i = 0; i < this.questions.length; i++){
+  //   console.log(this.questions[i]);
+  //   this.dataArray.push([['Correct', 'Incorrect'],
+  //   ['Correct',      this.questions[0].correctCount],
+  //   ['Incorrect',  this.questions[0].incorrectCount]]);
+  //   console.log(this.dataArray[i]);
+  // }
+  
+  this.data1 = [['Correct', 'Incorrect'],
+     ['Correct',      this.questions[0].correctCount],
+     ['Incorrect',  this.questions[0].incorrectCount]];
 
   this.config1 = new PieChartConfig('Percentage of correct responses', 0.4);
-  this.elementId1 = 'myPieChart1';
+  this.elementId = 'myPieChart1';
+}
+
+getData(i : number){
+  //console.log(i);
+  localStorage.setItem('question', JSON.stringify(this.questions[i]));
+  this.router.navigate(["/statistics"])
+
 }
 }

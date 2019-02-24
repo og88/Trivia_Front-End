@@ -38,7 +38,7 @@ onLogin(){
           if(Response.username == this.loginObj.username){
            // console.log(Response);
             localStorage.setItem('currentUser', JSON.stringify(Response));
-            this.router.navigate(["/main-menu"])
+            this.router.navigate(["/main-menu"]);
           }
         });
       } else {

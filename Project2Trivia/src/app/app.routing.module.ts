@@ -53,6 +53,10 @@ const routes: Route[] = [
 {
     path: "question-statistics",
     component: QuestionStatisticsComponent
+},
+{
+    path: "statistics",
+    component: StatisticsComponent
 }
 ];
 
