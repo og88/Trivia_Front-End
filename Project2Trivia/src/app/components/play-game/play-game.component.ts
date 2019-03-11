@@ -244,7 +244,7 @@ export class PlayGameComponent implements OnInit {
   } 
 
   //configUrl = 'http://localhost:8080/project2/rest/question/counter';
-  configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/project2/rest/question/counter';
+  configUrl = 'http://ec2-18-188-148-217.us-east-2.compute.amazonaws.com:8080/project2/rest/question/counter';
 
   UpdateQuestion(){
     this.http.post(this.configUrl, this.questionStats)
@@ -257,7 +257,7 @@ export class PlayGameComponent implements OnInit {
         tempU.highScore = this.totalScore;
         tempU.experience = Math.ceil(this.totalScore/(this.totalRight + 1));
 
-        this.configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/project2/rest/user/score/update';
+        this.configUrl = 'http://ec2-18-188-148-217.us-east-2.compute.amazonaws.com:8080/project2/rest/user/score/update';
         //this.configUrl = 'http://localhost:8080/project2/rest/user/score/update';
 
         this.http.post(this.configUrl, tempU)

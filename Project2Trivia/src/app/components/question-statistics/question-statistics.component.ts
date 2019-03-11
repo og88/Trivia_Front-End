@@ -19,7 +19,7 @@ export class QuestionStatisticsComponent {
 
   constructor(private http : HttpClient, public router: Router) { }
 
-  configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/project2/rest/questions';
+  configUrl = 'http://ec2-18-188-148-217.us-east-2.compute.amazonaws.com:8080/project2/rest/questions';
   //configUrl = 'http://localhost:8080/project2/rest/questions';
 
   data1: any[];

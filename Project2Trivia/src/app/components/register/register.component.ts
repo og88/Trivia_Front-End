@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-  configUrl = 'http://ec2-3-17-244-111.us-east-2.compute.amazonaws.com:8080/project2/rest/user/register'
+  configUrl = 'http://ec2-18-188-148-217.us-east-2.compute.amazonaws.com:8080/project2/rest/user/register'
 
   onRegister(){
 
